@@ -23,8 +23,8 @@ screen_height = screen.get_height()
 reload = 2
 
 running = True
-running_accueil, inventaire = importation()
-running_accueil = True
+running_home, inventaire = importation()
+running_home = True
 running_exercice = False
 running_cours = False
 running_video = False
