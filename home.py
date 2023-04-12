@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import pygame
-from tools import bouton
-from fonction import *
-
+from tools import bouton, button
+from function import *
+from course import Course
 pygame.init()
 
 pygame.font.init()
@@ -30,7 +30,7 @@ running_course = False
 running_video = False
 running_settings = False
 
-nut = pygame.image.load("assets/pictures for home/nut.png")
+nut = pygame.image.load("La-langue-des-signes-main/assets/picturesforhome/nut.png").convert_alpha()
 nut = pygame.transform.scale(nut, (150, 150)) # l'écrou pour settings
 
 
@@ -118,27 +118,46 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
                 exportation(inventaire)
                 pygame.quit()
     
-    running_cours = True
-    c = Cours()
-    while running_cours:
+    running_course = True
+    c = Course()
+
+    # cours_santé = font_h2
+    # cours_action
+    # cours_alimentation
+    # cours_base_et_lieu
+    # cours_famille
+    # cours_santé
+    # cours_
+    title_course = font_h1.render("Cours", 1, (255,255,255))
+    cours_alphabet = font_h2.render("alphabet",1,(255,0,0))
+    list_course = ["Action","Alimentation","base et lieux","Famille","Santé","Sentiments","Temps","Vie en Société"]
+    list_course_picture = ["La-langue-des-signes-main\assets\picturesforcourse\Action.jpg",
+    "La-langue-des-signes-main\assets\picturesforcourse\Alimentation et Divers.jpg",
+    "La-langue-des-signes-main\assets\picturesforcourse\BaseetLieux.jpg",
+    "La-langue-des-signes-main\assets\picturesforcourse\Famille.jpg",
+    "La-langue-des-signes-main\assets\picturesforcourse\Santé.jpg",
+    "La-langue-des-signes-main\assets\picturesforcourse\Sentiments.jpg",
+    "La-langue-des-signes-main\assets\picturesforcourse\Temps.jpg",
+    "La-langue-des-signes-main\assets\picturesforcourse\Vie en Société.jpg"]
+
+    background_course = pygame.image.load(r"C:\La-langue-des-signes-main\La-langue-des-signes-main\assets\picturesforcourse\background.png").convert()
+    while running_course:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
                 exportation(inventaire)
                 pygame.quit()
-
+        screen.blit(background_course,(0,0))
         
-        Titre_cours = font_h1.render("Cours", 1, (255,255,255))
-        cours_alphabet = font_h2.render("alphabet",1,(255,0,0))
-        cours_santé = font_h2
-        cours_action
-        cours_alimentation
-        cours_base_et_lieu
-        cours_famille
-        cours_santé
-        cours_
+        # affiche et charge les bouttons avec le texte
+        for i in range(len(list_course)):
+            title_of_the_lesson = font_h3.render(list_course[i],1,(255,0,0))
+            cours_affichage = button((0,255,0), 750, 300 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
+            if cours_affichage.isOver():
+                cours_affichage = button((0,155,0), 750, 300 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
+            cours_affichage.draw(screen)
+            screen.blit(title_of_the_lesson,(750, 300 + i*75))
         
-        #screen.blit(pygame.image.load("asserts/2.jpg"), (0, 0))
-        screen.blit(text, (400, 100))
+        screen.blit(title_course, (750, 120))
         pygame.display.flip()  # on rafraichie la page régulièrement
 

@@ -1,6 +1,7 @@
 import pygame
 pygame.font.init()
 font = pygame.font.SysFont('helvetic', 70)
+
 class button():
     def __init__(self, color, x, y, width, height, text='', text_color="black", border_radius=0):  # on initialise un bouton
         self.color = color
@@ -31,6 +32,7 @@ class button():
             if pos[1] > self.y and pos[1] < self.y + self.height:
                 return True
         return False
+
 
 
 
