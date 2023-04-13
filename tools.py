@@ -63,7 +63,7 @@ class SimpleButton:
 
 
 
-class ComplexButton():
+class ComplexButton:
 
     "La classe ComplexButton permet de créer des >>> boutons en forme de polygone <<< de couleur, position, dimension et nom choisis par l'utilisateur lors de sa création"
 
