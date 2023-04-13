@@ -1,6 +1,12 @@
 import pygame
+
 pygame.font.init()
-font = pygame.font.SysFont('helvetic', 70)
+font_h1 = pygame.font.SysFont('helvetic', 150)
+font_h2 = pygame.font.SysFont('helvetic', 120)
+font_h3 = pygame.font.SysFont('helvetic', 90)
+font_h4 = pygame.font.SysFont('helvetic', 70)
+font_p = pygame.font.SysFont('arrial', 30)
+
 class SimpleButton:
 
     "La classe SimpleButton permet de créer des >>> boutons rectangulaire <<< de couleur, position, dimension et nom choisis par l'utilisateur lors de sa création"
@@ -28,7 +34,7 @@ class SimpleButton:
         pygame.draw.rect(screen, self.color, 
                          (self.x, self.y, self.width, self.height), self.color_width, border_radius=self.border_radius)
         if self.text != '':
-            text = font.render(self.text, 1, self.text_color)
+            text = font_h4.render(self.text, 1, self.text_color)
             screen.blit(text, (self.x + (self.width/2 - text.get_width()/2), self.y + (self.height/2 - text.get_height()/2)))
 
     def isOver(self): # méthode permettant de vérifier si le bouton est survolé
