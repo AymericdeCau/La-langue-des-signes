@@ -19,17 +19,17 @@ class Course:
             self.font_h3 = pygame.font.SysFont('helvetic', 90)
             self.font_h4 = pygame.font.SysFont("helvetic", 70)
             self.font_p = pygame.font.SysFont('arrial', 30)
-            self.background_course = pygame.image.load("La-langue-des-signes-main/assets/picturesforcourse/background.png").convert()
+            self.background_course = pygame.image.load("./assets/picturesforcourse/background.png").convert()
             self.list_course = ["Action","Alimentation","base et lieux","Famille","Santé","Sentiments","Temps","Vie en Société"]
             self.list_course_picture = [
-                "La-langue-des-signes-main/assets/picturesforcourse/Action.jpg",
-                "La-langue-des-signes-main/assets/picturesforcourse/Alimentation et Divers.jpg",
-                "La-langue-des-signes-main/assets/picturesforcourse/BaseetLieux.jpg",
-                "La-langue-des-signes-main/assets/picturesforcourse/Famille.jpg",
-                "La-langue-des-signes-main/assets/picturesforcourse/Santé.jpg",
-                "La-langue-des-signes-main/assets/picturesforcourse/Sentiments.jpg",
-                "La-langue-des-signes-main/assets/picturesforcourse/Temps.jpg",
-                "La-langue-des-signes-main/assets/picturesforcourse/VieenSociété.jpg"
+                "./assets/picturesforcourse/Action.jpg",
+                "./assets/picturesforcourse/Alimentation et Divers.jpg",
+                "./assets/picturesforcourse/BaseetLieux.jpg",
+                "./assets/picturesforcourse/Famille.jpg",
+                "./assets/picturesforcourse/Santé.jpg",
+                "./assets/picturesforcourse/Sentiments.jpg",
+                "./assets/picturesforcourse/Temps.jpg",
+                "./assets/picturesforcourse/VieenSociété.jpg"
                 ] # (857, 1212) coordonnées pour toutes les images and 471 to have the picture in  the middle
             self.return_button_text = self.font_p.render("Retour",1,(50,)*3)
             self.return_button = SimpleButton((0,100,150), 1550-8, 850-8, self.return_button_text.get_width()+16, self.return_button_text.get_height()+16, border_radius=5)
@@ -122,6 +122,3 @@ class Course:
             screen.blit(self.return_button_text,(1550,850))
             screen.blit(title_part, (750, 120))
             pygame.display.flip()  # on rafraichie la page régulièrement
-
-course = Course(screen)
-course.run(True)
