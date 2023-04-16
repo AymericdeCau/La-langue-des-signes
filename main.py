@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import pygame
-from tools import SimpleButton, ComplexButton
+from tools import *
 from function import *
 from home import Home
 from course import Course
+from practice import Practice
+from settings import Settings
 
 pygame.init()
 
@@ -27,15 +29,20 @@ running_video = False
 running_settings = False
 liste_name_page = ["home", "practice", "course", "video", "settings"]
 
-
 while running: # boucle while principle qui permet à la fenêtre de rester ouverte comme sur toute fenêtre pygame
-    # chacune des boucles while situé ici représente une page de l'application
 
+
+    for event in pygame.event.get(): # pour pouvoir sortir quand on est dans aucune des pages
+        if event.type == pygame.QUIT:
+            running = False ; pygame.quit()
+
+
+    # chacune des boucles while situé ici représente une page de l'application
     # ainsi cette première boucle représente la page d'accueil home sur laquelle est le menu
     while running_home:
         if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
             menu = Home(screen) # on crée notre menu
-            menu.run() # on le lance
+            reload = menu.run() # on le lance
         
         index_of_next_page = menu.checked() # on vérifie si l'utilisateur clique sur un des boutons
         if index_of_next_page != False: # si un des boutons est cliqué
@@ -46,7 +53,40 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
         pygame.display.flip()  # on rafraichit la page à chaque tour de boucle
         for event in pygame.event.get():
             if event.type == pygame.QUIT: running, running_home = False, False ; pygame.quit() # l'utilisateur peut fermer la page quand il le souhaite
-    
-        while running_course:
-            course = Course(screen)
-            course.run(True)
+
+
+    while running_practice:
+        if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
+            practice = Practice(screen) # on crée notre menu
+            reload = practice.run() # on le lance
+
+        index_of_next_page = practice.checked() # on vérifie si l'utilisateur clique sur un des boutons
+        if index_of_next_page != "none": # si un des boutons est cliqué
+            running_practice = False # on ferme la page du menu
+            reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
+            globals()["running_" + liste_name_page[index_of_next_page]] = True # on lance la page qui a été cliqué
+
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: running, running_practice = False, False ; pygame.quit()
+
+
+    while running_settings:
+        if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
+            settings = Settings(screen) # on crée notre menu
+            reload = settings.run() # on le lance
+
+        index_of_next_page = settings.checked() # on vérifie si l'utilisateur clique sur un des boutons
+        if index_of_next_page != "none": # si un des boutons est cliqué
+            running_settings = False # on ferme la page du menu
+            reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
+            globals()["running_" + liste_name_page[index_of_next_page]] = True # on lance la page qui a été cliqué
+
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: running, running_settings = False, False ; pygame.quit()
+
+
+    while running_course:
+        course = Course(screen)
+        course.run(True)
