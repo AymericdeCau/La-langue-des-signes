@@ -32,3 +32,5 @@ class Settings:
                 if b.selection: # si le bouton n'est pas survolé mais que la couleur de l'arrière plan est encore en mode sélection alors
                     b.unselect(self.screen) # on le remet en mode non sélection, c'est à dire que l'on remet l'arrière plan initiale
         return "none"
+
+    
