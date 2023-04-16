@@ -90,3 +90,5 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
     while running_course:
         course = Course(screen)
         course.run(True)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: running, running_course = False, False ; pygame.quit()
