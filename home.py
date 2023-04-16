@@ -4,15 +4,12 @@ from tools import *
 
 pygame.init()
 
-clock = pygame.time.Clock()
-clock.tick(60)
-
-nut = pygame.image.load("./assets/picturesforhome/nut.png")
-nut = pygame.transform.scale(nut, (150, 150)) # l'écrou pour settings
-
 class Home:
+
     def __init__(self, screen):
         self.screen = screen
+        nut = pygame.image.load("./assets/picturesforhome/nut.png")
+        self.nut = pygame.transform.scale(nut, (150, 150)) # l'écrou pour settings
 
     def run(self):
         self.screen.fill(((10, 30, 60)))
@@ -40,6 +37,7 @@ class Home:
             b.draw(self.screen) # draw est une méthode définie dans la class bouton qui permet d'afficher les boutons sur la page
             
         self.refresh()
+        return 0
 
     def refresh(self):
             text = font_h1.render("La Langue Muette", 1, (255,255,255))
@@ -50,23 +48,22 @@ class Home:
             self.screen.blit(text, (((self.course.coor[0][0] + self.course.coor[3][0])/2 + (self.course.coor[1][0] + self.course.coor[2][0])/2)/2 - text.get_width()/2, (self.course.coor[1][1] + self.course.coor[2][1])/2 - text.get_height()/2))
             text = font_h2.render("Vidéo", 1, (255,255,255))
             self.screen.blit(text, (((self.video.coor[0][0] + self.video.coor[3][0])/2 + (self.video.coor[1][0] + self.video.coor[2][0])/2)/2 - text.get_width()/2, (self.video.coor[1][1] + self.video.coor[2][1])/2 - text.get_height()/2))
-            self.screen.blit(nut, ((self.settings.coor[0][0] + self.settings.coor[1][0])/2 - nut.get_width()/2, (self.settings.coor[1][1] + self.settings.coor[2][1])/2 - nut.get_height()/2))
+            self.screen.blit(self.nut, ((self.settings.coor[0][0] + self.settings.coor[1][0])/2 - self.nut.get_width()/2, (self.settings.coor[1][1] + self.settings.coor[2][1])/2 - self.nut.get_height()/2))
     
     def checked(self):
         for b in self.liste_bouton: # on vérifie pour chaque bouton du menu
             if b.isOver(): # si le bouton est survolé
                 if b.selection == False : # si le bouton n'est pas encore sélectionner
                     b.select(self.screen) # on change alors la couleur de l'arrière plan
+                    if b == self.settings: self.nut = pygame.transform.rotate(self.nut, 90) # et si le bouton en question est settings on fait tourner l'écrou
                     self.refresh()
-                    if b == self.settings: nut = pygame.transform.rotate(nut, 90) # et si le bouton en question est settings on fait tourner l'écrou
                 pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
                 if pressed[0]: # si la souris est préssé alors que le bouton est survolé comme vu au dessus
                     # 0=gauche, 1=milieu, 2=droite
-                    print(self.liste_bouton.index(b))
                     return self.liste_bouton.index(b)
             else:
                 if b.selection == True : # si le bouton n'est pas survolé mais que la couleur de l'arrière plan est encore en mode sélection alors
                     b.unselect(self.screen) # on le remet en mode non sélection, c'est à dire que l'on remet l'arrière plan initiale
                     self.refresh()
-                    if b == "settings": nut = pygame.transform.rotate(nut, 90) # si le bouton en question est le bouton settings on le fait tourner
+                    if b == "settings": self.nut = pygame.transform.rotate(self.nut, 90) # si le bouton en question est le bouton settings on le fait tourner
         return False
