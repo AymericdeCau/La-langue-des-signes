@@ -26,7 +26,7 @@ class Home:
         # print(home.__doc__) # <<< pour lire les informations relatives à la classe ComplexButton vous pouvez décommenté l'instruction à gauche de ce texte <<<
         self.practice = ComplexButton((140, 255, 0), [(m_x , m_y + m_h/20*8 + m_i), (m_x + m_L/5*2, m_y + m_h/20*8 + m_i), (m_x + m_L/5, m_y + m_h), (m_x, m_y + m_h)])
         self.course = ComplexButton((250, 150, 0), [(m_x + m_L/5*2 + m_i, m_y + m_h/20*8 + m_i), (m_x + m_L, m_y + m_h/20*8 + m_i), (m_x + m_L, m_y + m_h/20*8 + m_i + m_h/20*6  - m_i/2), (m_x + m_L/10*3 + m_i, m_y + m_h/20*8 + m_i + m_h/20*6 - m_i/2)])
-        self.video = ComplexButton((200, 0, 100), [(m_x + m_L/10*3 + m_i - m_i*(m_L/5)/(m_h/20*12-m_i), m_y + m_h/20*8 + m_i + m_h/20*6 + m_i/2), (m_x + m_L/10*3 + m_i - m_i*m_L/5/m_h/20*8 + m_L/10*5, m_y + m_h/20*8 + m_i + m_h/20*6 + m_i/2), (m_x + m_L/10 + m_i + m_L/5*3, m_y + m_h), (m_x + m_L/5 + m_i, m_y + m_h)])
+        self.video = ComplexButton((200, 0, 100), [(m_x + m_L/10*3 + m_i - m_i*(m_L/5)/(m_h/20*12-m_i), m_y + m_h/20*8 + m_i + m_h/20*6 + m_i/2), (m_x + m_L/10*3 + m_i - m_i*m_L/5/m_h/20*8 + m_L/10*5, m_y + m_h/20*8 + m_i + m_h/20*6 + m_i/2), (m_x + m_L/10 + m_i + m_L/5*3, m_y + m_h), (m_x + m_L/5 + m_i, m_y + m_h)], select_color=(255, 210, 50))
         self.settings = ComplexButton((100, 100, 100), [(m_x + m_L/10*3 + 2*m_i - m_i*m_L/5/m_h/20*8 + m_L/10*5 + m_i / 2, m_y + m_h/20*8 + m_i + m_h/20*6 + m_i/2), (m_x + m_L, m_y + m_h/20*8 + m_i + m_h/20*6 + m_i/2), (m_x + m_L, m_y + m_h), (m_x + m_L/10 + 2*m_i + m_L/5*3 + m_i / 2, m_y + m_h)])
         
         self.liste_bouton = [self.home, self.practice, self.course, self.video, self.settings]
