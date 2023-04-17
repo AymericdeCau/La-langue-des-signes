@@ -60,15 +60,31 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
             practice = Practice(screen) # on crée notre menu
             reload = practice.run() # on le lance
 
-        index_of_next_page = practice.checked() # on vérifie si l'utilisateur clique sur un des boutons
-        if index_of_next_page != "none": # si un des boutons est cliqué
+        index_of_next_page = practice.checked() # on vérifie si l'utilisateur clique sur un des boutons menant à une autre page
+        if index_of_next_page != "none": # si un des boutons est cliqués
             running_practice = False # on ferme la page du menu
             reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
-            globals()["running_" + liste_name_page[index_of_next_page]] = True # on lance la page qui a été cliqué
+            globals()["running_" + liste_name_page[index_of_next_page]] = True # on lance la page qui a été cliquée
 
         pygame.display.flip()
         for event in pygame.event.get():
             if event.type == pygame.QUIT: running, running_practice = False, False ; pygame.quit()
+
+
+    while running_video:
+        if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
+            video = Settings(screen) # on crée notre menu
+            reload = video.run() # on le lance
+
+        index_of_next_page = video.checked() # on vérifie si l'utilisateur clique sur un des boutons
+        if index_of_next_page != "none": # si un des boutons est cliqués
+            running_video = False # on ferme la page du menu
+            reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
+            globals()["running_" + liste_name_page[index_of_next_page]] = True # on lance la page qui a été cliquée
+
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: running, running_video = False, False ; pygame.quit()
 
 
     while running_settings:
@@ -77,10 +93,10 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
             reload = settings.run() # on le lance
 
         index_of_next_page = settings.checked() # on vérifie si l'utilisateur clique sur un des boutons
-        if index_of_next_page != "none": # si un des boutons est cliqué
+        if index_of_next_page != "none": # si un des boutons est cliqués
             running_settings = False # on ferme la page du menu
             reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
-            globals()["running_" + liste_name_page[index_of_next_page]] = True # on lance la page qui a été cliqué
+            globals()["running_" + liste_name_page[index_of_next_page]] = True # on lance la page qui a été cliquée
 
         pygame.display.flip()
         for event in pygame.event.get():
@@ -90,5 +106,3 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
     while running_course:
         course = Course(screen)
         course.run(True)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT: running, running_course = False, False ; pygame.quit()
