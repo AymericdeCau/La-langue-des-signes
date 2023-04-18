@@ -15,6 +15,7 @@ class Course:
         self.font_h4 = pygame.font.SysFont("helvetic", 70)
         self.font_p = pygame.font.SysFont('arrial', 30)
 
+        # charge le background
         self.background_course = pygame.image.load("./assets/picturesforcourse/background.png").convert()
         self.list_course = ["Action","Alimentation","base et lieux","Famille","Santé","Sentiments","Temps","Vie en Société"]
         self.list_course_picture = [
