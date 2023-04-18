@@ -1,3 +1,5 @@
+#self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
+#self.return_button = SimpleButton((0,100,150), 1550-8, 850-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
 import pygame
 from tools import SimpleButton
 import time
@@ -8,10 +10,6 @@ clock.tick(60)
 
 
 class Course:
-    """
-    La partie course fonctionne par l’initialisation des variables.
-    Enfin, la 
-    """
     def __init__(self,screen):
         self.screen = screen
 
@@ -34,83 +32,119 @@ class Course:
             "./assets/picturesforcourse/Temps.jpg",
             "./assets/picturesforcourse/VieenSociété.jpg"
             ] # (857, 1212) coordonnées pour toutes les images and 471 to have the picture in  the middle
-        self.return_button_text = self.font_p.render("RETOUR",1,(50,)*3)
-        self.return_button = SimpleButton((0,100,150), 1550-8, 850-8, self.return_button_text.get_width()+16, self.return_button_text.get_height()+16, border_radius=5)
+        self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
+        self.return_button = SimpleButton((0,100,150), 1550-8, 850-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
 
     def run_sub_lesson(self, index):
         """
         La méthode run() permet de donner le sommaire des leçons et si l’on clique sur l’un des titres on est redirigé vers run_sub_lesson().
         Elle permet aussi de renvoyer vers le menu avec les touches escape, espace ou en cliquant sur le boutton RETOUR
         """
-        #affiche les boutons
-        next_button_text = self.font_h3.render("page suivante", 1,(50,)*3)
-        previous_button_text = self.font_h3.render("ancienne page", 1, (50,)*3)
 
-        next_button = SimpleButton((0,0,150), 50, 600, next_button_text.get_width(), next_button_text.get_height())
-        previous_button = SimpleButton((0,0,150), 200, 600, previous_button_text.get_width(), previous_button_text.get_height())
+        
+
         #affiche le cours
         printing_lesson = pygame.image.load(self.list_course_picture[index]).convert()
+        printing_lesson = pygame.transform.scale(printing_lesson, (printing_lesson.get_width()*2/3, printing_lesson.get_height()*2/3))
         title_of_the_lesson = self.font_h3.render(self.list_course[index],1,(255,0,0))
         running_sub_lesson = True
-
+        once_next, once_pre = True, True
         while running_sub_lesson == True:
-            self.return_button = SimpleButton((0,100,150), 1550-8, 850-8, self.return_button_text.get_width()+16, self.return_button_text.get_height()+16, border_radius=5)
             self.screen.blit(self.background_course,(0,0))
+            #charge les boutons
+            previous_page_button = SimpleButton((125,125,0), 600, 300,100, 50," < ", (100,)*3,self.font_p, border_radius=5)
+            next_page_button = SimpleButton((125,125,0), 1410, 300, 100, 50, " > ", (100,)*3, self.font_p, border_radius=5)
+            self.return_button = SimpleButton((0,100,150), 1600-8, 870-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
+            self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running_sub_lesson == False
-                    #exportation(inventaire)
                     pygame.quit()
                 elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE or event.key == pygame.K_ESCAPE:
+                    if event.key == pygame.K_ESCAPE:
                         running_sub_lesson = False
-                elif event.type == pygame.MOUSEBUTTONUP and event.button==1:
-                    if index != len(self.list_course_picture)-1:
-                        index += 1
-                        printing_lesson = pygame.image.load(self.list_course_picture[index]).convert()
-                        title_of_the_lesson = self.font_h3.render(self.list_course[index],1,(255,0,0))
-                    else:
-                        running_sub_lesson = False
-                elif event.type == pygame.MOUSEBUTTONUP and event.button==3:
-                    if index != 0:
+            
+            for i in range(len(self.list_course)):
+                title_of_the_lesson_i = self.font_h4.render(self.list_course[i],1,(255,0,0))
+                cours_affichage = SimpleButton((0,255,0), 150, 300 + i*65, title_of_the_lesson_i.get_width(), title_of_the_lesson_i.get_height())
+                if cours_affichage.isOver():
+                    cours_affichage = SimpleButton((0,155,0), 150, 300 + i*65, title_of_the_lesson_i.get_width(), title_of_the_lesson_i.get_height())
+                    pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
+                    if pressed[0]:
+                        index = i
+                if i==index:
+                    cours_affichage = SimpleButton((100,155,100), 150, 300 + i*65, title_of_the_lesson_i.get_width(), title_of_the_lesson_i.get_height())
+                cours_affichage.draw(self.screen)
+                self.screen.blit(title_of_the_lesson_i,(150, 300 + i*65))
+
+            if previous_page_button.isOver():
+                previous_page_button = SimpleButton((0,125,125), 600, 300,100, 50," < ", (100,)*3,self.font_p, border_radius=5)
+                pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
+                if pressed[0]:
+                    if index != 0 and once_pre:
                         index -=1
-                        printing_lesson = pygame.image.load(self.list_course_picture[index]).convert()
-                        title_of_the_lesson = self.font_h3.render(self.list_course[index],1,(255,0,0))
-                    else:
-                        running_sub_lesson = False
+                        once_pre = False
+
+                else:
+                    once_pre = True
+            if next_page_button.isOver():
+                next_page_button = SimpleButton((0,125,125), 1410, 300, 100, 50, " > ", (100,)*3, self.font_p, border_radius=5)
+                pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
+                if pressed[0]:
+                    if index < len(self.list_course_picture) - 1 and once_next:
+                        index += 1
+                        once_next = False
+                else:
+                    once_next = True
             if self.return_button.isOver():
-                self.return_button = SimpleButton((0,100,250), 1550-8, 850-8, self.return_button_text.get_width()+16, self.return_button_text.get_height()+16, border_radius=5)
-                if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                self.return_button = SimpleButton((150,0,100), 1600-8, 870-8,  86, 30, "Retour",(50,)*3, self.font_p, border_radius=5)
+                pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
+                if pressed[0]:
                     running_sub_lesson = False
 
-    
+            if self.home.isOver():
+                self.home = SimpleButton((210, 250, 0), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
+                pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
+                if pressed[0]:
+                    running_sub_lesson = False
 
-            self.return_button.draw(self.screen)
-            self.screen.blit(self.return_button_text,(1550,850))
+            printing_lesson = pygame.image.load(self.list_course_picture[index]).convert()
+            printing_lesson = pygame.transform.scale(printing_lesson, (printing_lesson.get_width()*8/10, printing_lesson.get_height()*8/10))
+            title_of_the_lesson = self.font_h3.render(self.list_course[index],1,(255,0,0))
+
             self.screen.blit(title_of_the_lesson,(150,200))
-            self.screen.blit(printing_lesson,(600,0))
+            self.screen.blit(printing_lesson,(710,0))
+            previous_page_button.draw(self.screen)
+            next_page_button.draw(self.screen)
+            self.home.draw(self.screen)
+            self.return_button.draw(self.screen)
+
             pygame.display.flip()  # on rafraichie la page régulièrement
 
     def run(self, running_course=False):
         title_part = self.font_h1.render("Cours", 1, (255,255,255))
         while running_course:
-            self.return_button = SimpleButton((0,100,150), 1550-8, 850-8, self.return_button_text.get_width()+16, self.return_button_text.get_height()+16, border_radius=5)
+            self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
+            #self.return_button = SimpleButton((0,100,150), 1550-8, 850-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
             self.screen.blit(self.background_course,(0,0))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-                    exportation(inventaire)
                     pygame.quit()
                 elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE or event.key == pygame.K_ESCAPE:
+                    if event.key == pygame.K_ESCAPE:
                         running_course = False
-                        # jsp koii  méètrreeuuu
-
             
-            if self.return_button.isOver():
-                self.return_button = SimpleButton((0,100,250), 1550-8, 850-8, self.return_button_text.get_width()+16, self.return_button_text.get_height()+16, border_radius=5)
+
+            if self.home.isOver():
+                self.home = SimpleButton((210, 250, 0), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
                 if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                     running_course = False
+                
+            #if self.return_button.isOver():
+                #self.return_button = SimpleButton((150,0,100), 1550-8, 850-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
+                #if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                    #running_course = False
             
             # affiche et charge les bouttons avec le texte
             for i in range(len(self.list_course)):
@@ -118,14 +152,14 @@ class Course:
                 cours_affichage = SimpleButton((0,255,0), 750, 300 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
                 if cours_affichage.isOver():
                     cours_affichage = SimpleButton((0,155,0), 750, 300 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
-                    if event.type == pygame.MOUSEBUTTONUP and event.button==1:
+                    pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
+                    if pressed[0]:
                         self.run_sub_lesson(i)
-                        time.sleep(0.4)
                 
                 cours_affichage.draw(self.screen)
                 self.screen.blit(title_of_the_lesson,(750, 300 + i*75))
-            
-            self.return_button.draw(self.screen)
-            self.screen.blit(self.return_button_text,(1550,850))
+            self.home.draw(self.screen)
+            #self.return_button.draw(self.screen)
             self.screen.blit(title_part, (750, 120))
             pygame.display.flip()  # on rafraichie la page régulièrement
+
