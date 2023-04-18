@@ -102,7 +102,10 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
         for event in pygame.event.get():
             if event.type == pygame.QUIT: running, running_settings = False, False ; pygame.quit()
 
-
-    while running_course:
-        course = Course(screen)
-        course.run(True)
+    while running_course: # initialisation de la page quand l'utilisateur l'ouvre
+        if reload == 2:
+            course = Course(screen)
+            reload = course.run(True)
+        running_course = False
+        reload = 2
+        running_home = True
