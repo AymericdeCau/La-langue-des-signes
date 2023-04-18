@@ -1,19 +1,14 @@
-#self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
-#self.return_button = SimpleButton((0,100,150), 1550-8, 850-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
+# importation des bibliothèques nécessaires
 import pygame
 from tools import SimpleButton
 import time
-pygame.init()
-
-clock = pygame.time.Clock()
-clock.tick(60)
 
 
 class Course:
     def __init__(self,screen):
         self.screen = screen
 
-        #initialise tous les font /!\ MAUVAIS
+        #initialise tous les font
         self.font_h1 = pygame.font.SysFont('helvetic', 150)
         self.font_h2 = pygame.font.SysFont('helvetic', 120)
         self.font_h3 = pygame.font.SysFont('helvetic', 90)
@@ -41,14 +36,13 @@ class Course:
         Elle permet aussi de renvoyer vers le menu avec les touches escape, espace ou en cliquant sur le boutton RETOUR
         """
 
-        
-
-        #affiche le cours
+        #charge l’affichage de la leçon
         printing_lesson = pygame.image.load(self.list_course_picture[index]).convert()
         printing_lesson = pygame.transform.scale(printing_lesson, (printing_lesson.get_width()*2/3, printing_lesson.get_height()*2/3))
+
         title_of_the_lesson = self.font_h3.render(self.list_course[index],1,(255,0,0))
         running_sub_lesson = True
-        once_next, once_pre = True, True
+        once_next, once_pre = True, True # variable
         while running_sub_lesson == True:
             self.screen.blit(self.background_course,(0,0))
             #charge les boutons
@@ -64,7 +58,7 @@ class Course:
                     if event.key == pygame.K_ESCAPE:
                         running_sub_lesson = False
             
-            for i in range(len(self.list_course)):
+            for i in range(len(self.list_course)): # affiche et crée le sommaire 
                 title_of_the_lesson_i = self.font_h4.render(self.list_course[i],1,(255,0,0))
                 cours_affichage = SimpleButton((0,255,0), 150, 300 + i*65, title_of_the_lesson_i.get_width(), title_of_the_lesson_i.get_height())
                 if cours_affichage.isOver():
@@ -84,9 +78,9 @@ class Course:
                     if index != 0 and once_pre:
                         index -=1
                         once_pre = False
-
                 else:
                     once_pre = True
+            
             if next_page_button.isOver():
                 next_page_button = SimpleButton((0,125,125), 1410, 300, 100, 50, " > ", (100,)*3, self.font_p, border_radius=5)
                 pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
@@ -96,6 +90,7 @@ class Course:
                         once_next = False
                 else:
                     once_next = True
+            
             if self.return_button.isOver():
                 self.return_button = SimpleButton((150,0,100), 1600-8, 870-8,  86, 30, "Retour",(50,)*3, self.font_p, border_radius=5)
                 pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
@@ -136,18 +131,13 @@ class Course:
                         running_course = False
             
 
-            if self.home.isOver():
-                self.home = SimpleButton((210, 250, 0), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
-                if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-                    running_course = False
+            if self.home.isOver(): # demande si l’on est sur le bouton home 
+                self.home = SimpleButton((210, 250, 0), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p) # change la couleur du bouton home
+                if event.type == pygame.MOUSEBUTTONUP and event.button == 1: # si appuie du clique gauche 
+                    running_course = False # fait arrêter la boucle
                 
-            #if self.return_button.isOver():
-                #self.return_button = SimpleButton((150,0,100), 1550-8, 850-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
-                #if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-                    #running_course = False
             
-            # affiche et charge les bouttons avec le texte
-            for i in range(len(self.list_course)):
+            for i in range(len(self.list_course)): # affiche et crée le sommaire 
                 title_of_the_lesson = self.font_h3.render(self.list_course[i],1,(255,0,0))
                 cours_affichage = SimpleButton((0,255,0), 750, 300 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
                 if cours_affichage.isOver():
@@ -159,7 +149,6 @@ class Course:
                 cours_affichage.draw(self.screen)
                 self.screen.blit(title_of_the_lesson,(750, 300 + i*75))
             self.home.draw(self.screen)
-            #self.return_button.draw(self.screen)
             self.screen.blit(title_part, (750, 120))
             pygame.display.flip()  # on rafraichie la page régulièrement
 
