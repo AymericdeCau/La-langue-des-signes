@@ -10,7 +10,7 @@ class Course:
 
         #initialise tous les font
         self.font_h1 = pygame.font.SysFont('helvetic', 150)
-        self.font_h2 = pygame.font.SysFont('helvetic', 120)
+        #self.font_h2 = pygame.font.SysFont('helvetic', 120)
         self.font_h3 = pygame.font.SysFont('helvetic', 90)
         self.font_h4 = pygame.font.SysFont("helvetic", 70)
         self.font_p = pygame.font.SysFont('arrial', 30)
@@ -45,10 +45,11 @@ class Course:
         running_sub_lesson = True
         once_next, once_pre = True, True # variable
         while running_sub_lesson == True:
-            self.screen.blit(self.background_course,(0,0))
+            #self.screen.blit(self.background_course,(0,0))
+            self.screen.fill(((10, 30, 60)))
             #charge les boutons
-            previous_page_button = SimpleButton((125,125,0), 600, 300,100, 50," < ", (100,)*3,self.font_p, border_radius=5)
-            next_page_button = SimpleButton((125,125,0), 1410, 300, 100, 50, " > ", (100,)*3, self.font_p, border_radius=5)
+            previous_page_button = SimpleButton((0,125,255), 650, 350,50, 50," < ", (255,)*3,self.font_p, border_radius=20)
+            next_page_button = SimpleButton((0,125,255), 1440, 350, 50, 50, " > ", (255,)*3, self.font_p, border_radius=20)
             self.return_button = SimpleButton((0,100,150), 1600-8, 870-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
             self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
             for event in pygame.event.get():
@@ -60,20 +61,20 @@ class Course:
                         running_sub_lesson = False
             
             for i in range(len(self.list_course)): # affiche et crée le sommaire 
-                title_of_the_lesson_i = self.font_h4.render(self.list_course[i],1,(255,0,0))
-                cours_affichage = SimpleButton((0,255,0), 150, 300 + i*65, title_of_the_lesson_i.get_width(), title_of_the_lesson_i.get_height())
+                title_of_the_lesson_i = self.font_h4.render(self.list_course[i], 1, (10, 30, 60))
+                cours_affichage = SimpleButton((255,)*3, 150, 300 + i*65, title_of_the_lesson_i.get_width(), title_of_the_lesson_i.get_height())
                 if cours_affichage.isOver():
-                    cours_affichage = SimpleButton((0,155,0), 150, 300 + i*65, title_of_the_lesson_i.get_width(), title_of_the_lesson_i.get_height())
+                    cours_affichage = SimpleButton((180,)*3, 150, 300 + i*65, title_of_the_lesson_i.get_width(), title_of_the_lesson_i.get_height())
                     pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
                     if pressed[0]:
                         index = i
                 if i==index:
-                    cours_affichage = SimpleButton((100,155,100), 150, 300 + i*65, title_of_the_lesson_i.get_width(), title_of_the_lesson_i.get_height())
+                    cours_affichage = SimpleButton((180,200,200), 150, 300 + i*65, title_of_the_lesson_i.get_width(), title_of_the_lesson_i.get_height())
                 cours_affichage.draw(self.screen)
                 self.screen.blit(title_of_the_lesson_i,(150, 300 + i*65))
 
             if previous_page_button.isOver():
-                previous_page_button = SimpleButton((0,125,125), 600, 300,100, 50," < ", (100,)*3,self.font_p, border_radius=5)
+                previous_page_button = SimpleButton((0,100,200), 650, 350,50, 50," < ", (255,)*3,self.font_p, border_radius=20)
                 pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
                 if pressed[0]:
                     if index != 0 and once_pre:
@@ -83,7 +84,7 @@ class Course:
                     once_pre = True
             
             if next_page_button.isOver():
-                next_page_button = SimpleButton((0,125,125), 1410, 300, 100, 50, " > ", (100,)*3, self.font_p, border_radius=5)
+                next_page_button = SimpleButton((0,100,200), 1440, 350, 50, 50, " > ", (255,)*3, self.font_p, border_radius=20)
                 pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
                 if pressed[0]:
                     if index < len(self.list_course_picture) - 1 and once_next:
@@ -121,8 +122,8 @@ class Course:
         title_part = self.font_h1.render("Cours", 1, (255,255,255))
         while running_course:
             self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
-            #self.return_button = SimpleButton((0,100,150), 1550-8, 850-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
-            self.screen.blit(self.background_course,(0,0))
+            self.screen.fill(((10, 30, 60)))
+            #self.screen.blit(self.background_course,(0,0))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -134,15 +135,16 @@ class Course:
 
             if self.home.isOver(): # demande si l’on est sur le bouton home 
                 self.home = SimpleButton((210, 250, 0), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p) # change la couleur du bouton home
-                if event.type == pygame.MOUSEBUTTONUP and event.button == 1: # si appuie du clique gauche 
+                pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
+                if pressed[0]:
                     running_course = False # fait arrêter la boucle
                 
             
             for i in range(len(self.list_course)): # affiche et crée le sommaire 
-                title_of_the_lesson = self.font_h3.render(self.list_course[i],1,(255,0,0))
-                cours_affichage = SimpleButton((0,255,0), 750, 300 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
+                title_of_the_lesson = self.font_h3.render(self.list_course[i],1,(10, 30, 60))
+                cours_affichage = SimpleButton((255,)*3, 750, 300 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
                 if cours_affichage.isOver():
-                    cours_affichage = SimpleButton((0,155,0), 750, 300 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
+                    cours_affichage = SimpleButton((180,)*3, 750, 300 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
                     pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
                     if pressed[0]:
                         self.run_sub_lesson(i)
