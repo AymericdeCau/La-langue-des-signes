@@ -36,7 +36,7 @@ class SimpleButton:
         self.font = font
         self.border_radius = border_radius
         self.border_width = border_width
-        self.selection = True
+        self.selection = "init"
         # La couleur selct_color par défaut est couleur complémentaire à celle de l'arrière plan
         if select_color == "none": self.select_color = (255 - self.color[0], 255 - self.color[1], 255 - self.color[2])
         else: self.select_color = select_color 
