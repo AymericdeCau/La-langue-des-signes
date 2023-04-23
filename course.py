@@ -34,8 +34,7 @@ class Course:
 
     def run_sub_lesson(self, index):
         """
-        La méthode run() permet de donner le sommaire des leçons et si l’on clique sur l’un des titres on est redirigé vers run_sub_lesson().
-        Elle permet aussi de renvoyer vers le menu avec les touches escape, espace ou en cliquant sur le boutton RETOUR
+        la méthode run_sub_lesson est la méthode qui  tourne et charge l’affichage de la leçon cliqué et le sommaire
         """
 
         #charge l’affichage de la leçon
@@ -120,7 +119,7 @@ class Course:
             pygame.display.flip()  # on rafraichie la page régulièrement
 
     def run(self, running_course=False):
-        title_part = self.font_h1.render("Cours", 1, (255,255,255))
+        title_part = self.font_h1.render("Cours", 1, (255,100,0))
         while running_course:
             self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
             self.screen.fill(((10, 30, 60)))
@@ -145,7 +144,7 @@ class Course:
                 title_of_the_lesson = self.font_h3.render(self.list_course[i],1,(10, 30, 60))
                 cours_affichage = SimpleButton((255,)*3, 900 - title_of_the_lesson.get_width()//2, 270 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
                 if cours_affichage.isOver():
-                    cours_affichage = SimpleButton((180,)*3, 900 - title_of_the_lesson.get_width()//2, 270 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
+                    cours_affichage = SimpleButton((250,250,00), 900 - title_of_the_lesson.get_width()//2, 270 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
                     pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
                     if pressed[0] :
                         self.run_sub_lesson(i)
