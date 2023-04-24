@@ -34,7 +34,7 @@ class Course:
 
     def run_sub_lesson(self, index):
         """
-        la méthode run_sub_lesson est la méthode qui  tourne et charge l’affichage de la leçon cliqué et le sommaire
+        la méthode run_sub_lesson est la méthode qui  tourne et charge l’affichage de la leçon cliqué et le sommaire à cotés
         """
 
         #charge l’affichage de la leçon
@@ -118,7 +118,7 @@ class Course:
 
             pygame.display.flip()  # on rafraichie la page régulièrement
 
-    def run(self, running_course=False):
+    def run(self, running_course=False, onclick=False):
         title_part = self.font_h1.render("Cours", 1, (255,100,0))
         while running_course:
             self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
@@ -131,12 +131,14 @@ class Course:
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         running_course = False
-            
+            pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
+            if not pressed[0]:
+                onclick = True
 
             if self.home.isOver(): # demande si l’on est sur le bouton home 
                 self.home = SimpleButton((210, 250, 0), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p) # change la couleur du bouton home
                 pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
-                if pressed[0]:
+                if pressed[0] and onclick:
                     running_course = False # fait arrêter la boucle
                 
             
@@ -146,7 +148,7 @@ class Course:
                 if cours_affichage.isOver():
                     cours_affichage = SimpleButton((250,250,00), 900 - title_of_the_lesson.get_width()//2, 270 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
                     pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
-                    if pressed[0] :
+                    if pressed[0] and onclick:
                         self.run_sub_lesson(i)
                     elif not pressed[0]:
                         self.next = True
