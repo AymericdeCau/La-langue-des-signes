@@ -6,6 +6,7 @@ from home import Home
 from course import Course
 from practice import Practice
 from settings import Settings
+from hand_detector import HandDetector
 
 pygame.init()
 
@@ -71,20 +72,20 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
             if event.type == pygame.QUIT: running, running_practice = False, False ; pygame.quit()
 
 
-    while running_video:
-        if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
-            video = Settings(screen) # on crée notre menu
-            reload = video.run() # on le lance
-
-        index_of_next_page = video.checked() # on vérifie si l'utilisateur clique sur un des boutons
-        if index_of_next_page != "none": # si un des boutons est cliqués
-            running_video = False # on ferme la page du menu
-            reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
-            globals()["running_" + liste_name_page[index_of_next_page]] = True # on lance la page qui a été cliquée
-
-        pygame.display.flip()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT: running, running_video = False, False ; pygame.quit()
+    #while running_video:
+    #    if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
+    #        video = Settings(screen) # on crée notre menu
+    #        reload = video.run() # on le lance
+    #
+    #    index_of_next_page = video.checked() # on vérifie si l'utilisateur clique sur un des boutons
+    #    if index_of_next_page != "none": # si un des boutons est cliqués
+    #        running_video = False # on ferme la page du menu
+    #        reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
+    #        globals()["running_" + liste_name_page[index_of_next_page]] = True # on lance la page qui a été cliquée
+    #
+    #    pygame.display.flip()
+    #    for event in pygame.event.get():
+    #        if event.type == pygame.QUIT: running, running_video = False, False ; pygame.quit()
 
 
     while running_settings:
@@ -105,7 +106,17 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
     while running_course: # initialisation de la page quand l'utilisateur l'ouvre
         if reload == 2:
             course = Course(screen)
-            reload = course.run(True)
+            reload = course.run(True,False)
         running_course = False
         reload = 2
         running_home = True
+    while running_video:
+        if reload == 2:
+            HDetector = HandDetector()
+            reload = HDetector.run(True)
+        running_video = False
+        reload = 2
+        running_home = True
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: running, running_video = False, False ; pygame.quit()
+
