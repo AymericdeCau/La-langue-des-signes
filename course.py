@@ -8,15 +8,12 @@ class Course:
     def __init__(self,screen):
         self.screen = screen
 
-        #initialise tous les font
+        #initialise toutes les polices d’écritures
         self.font_h1 = pygame.font.SysFont('helvetic', 150)
-        #self.font_h2 = pygame.font.SysFont('helvetic', 120)
         self.font_h3 = pygame.font.SysFont('helvetic', 90)
         self.font_h4 = pygame.font.SysFont("helvetic", 70)
         self.font_p = pygame.font.SysFont('arrial', 30)
 
-        # charge le background
-        self.background_course = pygame.image.load("./assets/picturesforcourse/background.png").convert()
         self.list_course = ["Action","Alimentation","base et lieux","Famille","Santé","Sentiments","Temps","Vie en Société"]
         self.list_course_picture = [
             "./assets/picturesforcourse/Action.jpg",
@@ -29,7 +26,7 @@ class Course:
             "./assets/picturesforcourse/VieenSociété.jpg"
             ] # (857, 1212) coordonnées pour toutes les images and 471 to have the picture in  the middle
         self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
-        self.return_button = SimpleButton((0,100,150), 1550-8, 850-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
+        self.return_button = SimpleButton((0,100,150), 1540, 840,  94, 40, "Retour",(50,)*3, self.font_p)
         self.next = False 
 
     def run_sub_lesson(self, index):
@@ -50,7 +47,7 @@ class Course:
             #charge les boutons
             previous_page_button = SimpleButton((0,125,255), 650, 350,50, 50," < ", (255,)*3,self.font_p, border_radius=20)
             next_page_button = SimpleButton((0,125,255), 1440, 350, 50, 50, " > ", (255,)*3, self.font_p, border_radius=20)
-            self.return_button = SimpleButton((0,100,150), 1600-8, 870-8,  86, 30, "Retour",(50,)*3, self.font_p,border_radius=5)
+            self.return_button = SimpleButton((0,100,150), 1540, 840,  94, 40, "Retour",(50,)*3, self.font_p)
             self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), self.font_p)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -94,7 +91,7 @@ class Course:
                     once_next = True
             
             if self.return_button.isOver():
-                self.return_button = SimpleButton((150,0,100), 1600-8, 870-8,  86, 30, "Retour",(50,)*3, self.font_p, border_radius=5)
+                self.return_button = SimpleButton((150,0,100), 1540, 840,  94, 40, "Retour",(50,)*3, self.font_p)
                 pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
                 if pressed[0]:
                     running_sub_lesson = False

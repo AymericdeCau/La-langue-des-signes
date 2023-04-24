@@ -6,7 +6,7 @@ from home import Home
 from course import Course
 from practice import Practice
 from settings import Settings
-from hand_detector import HandDetector
+from hand_detector import SignDetector
 
 pygame.init()
 
@@ -110,13 +110,45 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
         running_course = False
         reload = 2
         running_home = True
+    onclick = True
     while running_video:
-        if reload == 2:
-            HDetector = HandDetector()
-            reload = HDetector.run(True)
-        running_video = False
-        reload = 2
-        running_home = True
         for event in pygame.event.get():
             if event.type == pygame.QUIT: running, running_video = False, False ; pygame.quit()
+        if reload == 2:
+            screen.fill(((10, 30, 60)))
+            title = font_h1.render("Détecteur de signe",1,(255, 0, 0))
+            explanations1 = font_p.render("Ce programme est conçu pour détecter l'alphabet FSL à partir de la vidéo de votre webcam. Nous souhaitons",1,(255,)*3)
+            explanations2 = font_p.render("vous informer que ce programme ne collecte ni n'envoie aucune donnée de votre webcam.Nous vous recommandons de ",1,(255,)*3)
+            explanations3 = font_p.render("mettre votre main devant la caméra avant de lancer le programme afin de garantir le bon lancement du programme.",1,(255,)*3)
+            explanations4 = font_p.render("Nous espérons que cela vous permettra de profiter pleinement de notre programme en toute sécurité. Merci",1,(255,)*3)
+            accepter = SimpleButton((155,155,0), 800, 700, 250, 130,"Accepter",(255,)*3,font_h4)
+            if accepter.isOver() :
+                accepter = SimpleButton((255,0,255), 800, 700, 250, 130,"Accepter",(255,)*3,font_h4)
+                pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
+                if pressed[0] and not onclick:
+                    retour = font_p.render("Cliquez sur Échap sur cette page pour sortir",1, (255, 255, 255))
+                    printing_alphabet_lesson = pygame.image.load("./assets/picturesforcourse/alphabetFSL.png").convert()
+                    screen.blit(retour, (900 - retour.get_width()//2, 15))
+                    screen.blit(printing_alphabet_lesson,(900 - printing_alphabet_lesson.get_width()//2, 450 - printing_alphabet_lesson.get_height()//2 + 30)) # affiche au centre l’image
+                    pygame.display.flip()  # on rafraichie la page 
+
+                    SDetector = SignDetector(screen)
+                    reload = SDetector.run(True)
+                    running_video = False
+            pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
+            if not pressed[0]:
+                onclick = False
+            screen.blit(title,(900 - title.get_width()//2, 60))
+            screen.blit(explanations1,(900 - explanations1.get_width()//2,220))
+            screen.blit(explanations2,(900 - explanations2.get_width()//2,300))
+            screen.blit(explanations3,(900 - explanations3.get_width()//2,380))
+            screen.blit(explanations4,(900 - explanations4.get_width()//2,460))
+            accepter.draw(screen)
+            
+            
+            pygame.display.flip()  # on rafraichie la page 
+
+        
+        reload = 2
+        running_home = True
 
