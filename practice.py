@@ -6,8 +6,10 @@ from random import randint, choice
 pygame.init()
 
 class Practice:
-    def __init__(self, screen):
+    def __init__(self, screen, inventory):
         self.screen = screen
+        self.score_qcm = inventory[0]
+        self.best_score_game = inventory[1]
         self.page = "choose type"
         self.page_list = ["choose type", "qcm page", "game page"]
         self.pictures_location = [
@@ -15,17 +17,17 @@ class Practice:
             ("./assets/picturesforcourse/Action.jpg", 633, 227), ("./assets/picturesforcourse/Action.jpg", 890, 217), 
             ("./assets/picturesforcourse/AlimentationetDivers.jpg", 94, 225), ("./assets/picturesforcourse/AlimentationetDivers.jpg", 349, 231), 
             ("./assets/picturesforcourse/AlimentationetDivers.jpg", 612, 226), ("./assets/picturesforcourse/AlimentationetDivers.jpg", 902, 215),
-            ("./assets/picturesforcourse/BaseetLieux.jpg", 85, 230), ("./assets/picturesforcourse/BaseetLieux.jpg", 345, 226), #9
+            ("./assets/picturesforcourse/BaseetLieux.jpg", 85, 230), ("./assets/picturesforcourse/BaseetLieux.jpg", 345, 226),
             ("./assets/picturesforcourse/BaseetLieux.jpg", 633, 225), ("./assets/picturesforcourse/BaseetLieux.jpg", 887, 225),
             ("./assets/picturesforcourse/Famille.jpg", 63, 227), ("./assets/picturesforcourse/Famille.jpg", 354, 224),
-            ("./assets/picturesforcourse/Famille.jpg", 607, 229), ("./assets/picturesforcourse/Famille.jpg", 868, 213), #15
+            ("./assets/picturesforcourse/Famille.jpg", 607, 229), ("./assets/picturesforcourse/Famille.jpg", 868, 213),
             ("./assets/picturesforcourse/Santé.jpg", 64, 230), ("./assets/picturesforcourse/Santé.jpg", 323, 230),
             ("./assets/picturesforcourse/Santé.jpg", 617, 240), ("./assets/picturesforcourse/Santé.jpg", 888, 223),
             ("./assets/picturesforcourse/Sentiments.jpg", 65, 226), ("./assets/picturesforcourse/Sentiments.jpg", 322, 232),
-            ("./assets/picturesforcourse/Sentiments.jpg", 583, 240), ("./assets/picturesforcourse/Sentiments.jpg", 855, 230), #23
+            ("./assets/picturesforcourse/Sentiments.jpg", 583, 240), ("./assets/picturesforcourse/Sentiments.jpg", 855, 230),
             ("./assets/picturesforcourse/Temps.jpg", 58, 219), ("./assets/picturesforcourse/Temps.jpg", 340, 232),
             ("./assets/picturesforcourse/Temps.jpg", 602, 221), ("./assets/picturesforcourse/Temps.jpg", 855, 220),
-            ("./assets/picturesforcourse/VieenSociété.jpg", 69, 234), ("./assets/picturesforcourse/VieenSociété.jpg", 333, 238), #29
+            ("./assets/picturesforcourse/VieenSociété.jpg", 69, 234), ("./assets/picturesforcourse/VieenSociété.jpg", 333, 238),
             ("./assets/picturesforcourse/VieenSociété.jpg", 604, 190)
             ]
         
@@ -63,6 +65,11 @@ class Practice:
             self.home = SimpleButton((0, 210, 250), 20, 20, 200, 50, "Retour au menu", (255, 255, 255), font_p)
             self.qcm = SimpleButton((250, 150, 0), self.screen.get_width()/5-20, 200, self.screen.get_width()/5+40, self.screen.get_width()/5, "Questionnaire", (255, 255, 255), font_h4, 50)
             self.jeux = SimpleButton((200, 0, 100), 3*self.screen.get_width()/5-20, 200, self.screen.get_width()/5+40, self.screen.get_width()/5, "Jeux", (255, 255, 255), font_h4, 50, select_color=(255, 210, 50))
+            text = font_p.render("Nombre de bonne réponse au QCM : " + str(self.score_qcm), 1, (255,255,255))
+            self.screen.blit(text, ((50, 800)))
+            text = font_p.render("Meilleur score au jeu : " + str(self.best_score_game), 1, (255,255,255))
+            self.screen.blit(text, ((1700 - text.get_width(), 800)))
+            
             self.list_bouton = [self.home, self.qcm, self.jeux]
             self.list_bouton_nav = [self.home]
         if self.page == "qcm page":
@@ -95,6 +102,8 @@ class Practice:
             self.list_bouton_nav = []
 
         if self.page == "good answer":
+            self.score_qcm += 1
+            export((self.score_qcm, self.best_score_game))
             self.back = SimpleButton((0, 210, 250), 20, 20, 100, 50, "Retour", (255, 255, 255), font_p)
             self.next_qcm = SimpleButton((0, 210, 250), self.screen.get_width()/2 - 50, 400, 100, 50, "Suivant", (255, 255, 255), font_p)
             text = font_h3.render("Bravo vous avez trouvé la bonne réponse !", 1, (255,255,255))
@@ -115,7 +124,7 @@ class Practice:
             self.back = SimpleButton((0, 210, 250), 20, 20, 100, 50, "Retour", (255, 255, 255), font_p)
             self.level_1 = SimpleButton((240, 220, 0),  self.screen.get_width()/7, 560, self.screen.get_width()/5, 100, "Facile", (255, 255, 255), font_h4)
             self.level_2 = SimpleButton((220, 100, 0),  self.screen.get_width()/7 * 3, 560, self.screen.get_width()/5, 100, "Moyen", (255, 255, 255), font_h4)
-            self.level_3 = SimpleButton((170, 0, 0),  self.screen.get_width()/7 * 5, 560, self.screen.get_width()/5, 100, "Dificile", (255, 255, 255), font_h4)
+            self.level_3 = SimpleButton((170, 0, 0),  self.screen.get_width()/7 * 5, 560, self.screen.get_width()/5, 100, "Difficile", (255, 255, 255), font_h4)
             text = font_h4.render("Choisisez le niveau de difficulté : ", 1, (255,255,255))
             self.screen.blit(text, ((self.screen.get_width()/2 - text.get_width()/2, 400)))
             self.screen.blit(pygame.image.load("./assets/picturesforgame/touche_A.png"), (90, 383))
@@ -132,10 +141,10 @@ class Practice:
             pygame.draw.rect(self.screen, (100, 200, 255), ((0, 0), (1800,900)))
             pygame.draw.rect(self.screen, (255, 255, 255), ((0,200), (1800, 10)))
             pygame.draw.rect(self.screen, (255, 255, 255), ((0,700), (1800,10)))
-            text = font_h3.render("Utilisez la touche a pour monter ou descendre.", 1, (255,255,255))
-            self.screen.blit(text, ((self.screen.get_width()/2 - text.get_width()/2, 750)))
+            text = font_h4.render("Utilisez la touche A pour monter ou descendre.", 1, (255,255,255))
+            self.screen.blit(text, ((20, 750)))
             text = font_h4.render("Cliquez sur la signification d'un signe pour détruire le bloc du signe.", 1, (255,255,255))
-            self.screen.blit(text, ((self.screen.get_width()/2 - text.get_width()/2, 830)))
+            self.screen.blit(text, ((20, 830)))
 
             figure = [pygame.image.load("./assets/picturesforgame/fig_1.png"), pygame.image.load("./assets/picturesforgame/fig_2.png"), pygame.image.load("./assets/picturesforgame/fig_3.png"), pygame.image.load("./assets/picturesforgame/fig_4.png"), pygame.image.load("./assets/picturesforgame/fig_5.png")]
             mvt = 0
@@ -150,8 +159,8 @@ class Practice:
                 visible_sign_list.append(temp_sign_list[random_sign])
                 temp_sign_list.pop(random_sign)
             
-            difficulty = 550 if self.level[0] == 0 else 450 if self.level[0] == 1 else 350
-            score = 0
+            difficulty = 550 if self.level[0] == 0 else 450 if self.level[0] == 1 else 410
+            self.score = 0
 
             block_color = (50, 50, 100)
 
@@ -173,14 +182,21 @@ class Practice:
                         
             while game == True:
                 user_test = False
-                score += 1
+                self.score += 1
+
+                if self.score//100 > self.best_score_game: self.best_score_game = self.score//100
+
+                text = font_h4.render("Score : " + str(self.score//100), 1, (255,255,255))
+                pygame.draw.rect(self.screen, (100, 200, 255), ((1400, 740), (text.get_width() + 10, text.get_height())))
+                self.screen.blit(text, ((1400, 740)))
 
                 pygame.display.flip()
                 if figure_drct == 1 and figure_y > 0: figure_y -= 1
                 if figure_drct == -1 and figure_y < 380: figure_y += 1
 
                 pygame.draw.rect(self.screen, (100, 200, 255), ((0, 210), (1800, 490)))
-                self.screen.blit(figure[mvt], ((figure_x + 100, figure_y + 210), (50, 50)))
+                if figure_drct == 1: self.screen.blit(pygame.transform.rotate( figure[mvt], 180), ((figure_x + 100, figure_y + 210), (50, 50)))
+                if figure_drct == -1: self.screen.blit(figure[mvt], ((figure_x + 100, figure_y + 210), (50, 50)))
 
                 if mvt < 4: mvt += 1
                 else: mvt = 0
@@ -211,7 +227,7 @@ class Practice:
                     block_list.append([unit_x, unit_y, unit_d, 1796])
                     block = 0
                 
-                if score//5000 >= nb_boss:
+                if self.score//5000 >= nb_boss:
                     block = level_dificulty
                     name = choice(visible_sign_list)
                     boss_y = 210 + randint(0, 221)
@@ -234,7 +250,7 @@ class Practice:
                     if boss_advance >= boss_speed: boss[1] -= 1
                     pygame.draw.rect(self.screen, block_color, ((boss[1], boss[2]), (213, self.pictures_location[boss[0][1]][2] + 10)))
                     self.screen.blit(boss[3], (boss[1] + 5, boss[2] + 5), (21 + boss[0][2] * 205, self.pictures_location[boss[0][1]][1], 203, self.pictures_location[boss[0][1]][2]))
-                    if boss[1] < figure_x + 80 + figure[mvt].get_width() and figure_x + 150 <= unit[1] + 203 and figure_y + 215 <= boss[2] + self.pictures_location[boss[0][1]][2] and figure_y + 200  + figure[mvt].get_height() >= boss[2]:
+                    if boss[1] < figure_x + 80 + figure[mvt].get_width() and figure_x + 150 <= boss[1] + 203 and figure_y + 215 <= boss[2] + self.pictures_location[boss[0][1]][2] and figure_y + 200  + figure[mvt].get_height() >= boss[2]:
                         game = False
                         self.page = "game over"
                     if boss[1] + 213 < 0: boss_list.remove(boss)
@@ -247,14 +263,17 @@ class Practice:
                             if figure_drct == 1: figure_drct = -1  # and figure_y < 30  Pour ne pas pouvoir changé de sens que lorsque l'on est très proche des lignes
                             elif figure_drct == -1 : figure_drct = 1  # and figure_y > 350
                     if event.type == pygame.KEYUP:
-                        if event.key == pygame.K_a and clicked_a == True: clicked_a = False
+                        if event.key == pygame.K_a and clicked_a == True:
+                            clicked_a = False
                     if event.type == pygame.MOUSEBUTTONDOWN and clicked_mousse == False and user_test != False:
                         clicked_mousse = True
                         for boss in boss_list:
                             if user_test == boss[0]:
                                 boss_list.remove(boss)
                     if event.type == pygame.MOUSEBUTTONUP and clicked_mousse == True: clicked_mousse = False
-                    if event.type == pygame.QUIT: pygame.quit()
+                    if event.type == pygame.QUIT:
+                        export((self.score_qcm, self.best_score_game))
+                        pygame.quit()
 
 
             self.list_bouton = []
@@ -272,8 +291,9 @@ class Practice:
             text = font_h1.render("Game Over", 1, (255,255,255))
             self.screen.blit(text, ((self.screen.get_width()/2 - text.get_width()/2, self.screen.get_height()/2 - text.get_height()/2 -250)))
             self.list_bouton = [self.back, self.next_game, self.course]
+            text = font_h4.render("Score : " + str(self.score//100), 1, (255,255,255))
+            self.screen.blit(text, ((1300, 800)))
             self.list_bouton_nav = [0, 0, self.course]
-
                 
 
 
@@ -313,7 +333,7 @@ class Practice:
                         self.run()
                     elif b in self.list_bouton_nav:
                         b.unselect(self.screen)
-                        return self.list_bouton.index(b)
+                        return self.list_bouton.index(b), (self.score_qcm, self.best_score_game)
                     elif b in self.list_choice:
                         if self.list_choice.index(b) == self.solution_place:
                             self.page = "good answer"
@@ -324,6 +344,7 @@ class Practice:
                     elif b not in (self.list_bouton_nav and self.list_choice):
                         self.page = self.page_list[self.list_bouton.index(b)]
                         b.selection = "init"
+                        export((self.score_qcm, self.best_score_game))
                         self.run()
                 if not pressed[0]: self.next = True
                 break
@@ -333,4 +354,4 @@ class Practice:
                     if b in self.list_choice:
                         choice = self.list_choice.index(b)
                         self.screen.blit(pygame.image.load(self.pictures_location[self.list_option[choice][1]][0]), (b.x + 10, b.y + 10), (21 + (self.list_option[choice][2]%4) * 205, self.pictures_location[self.list_option[choice][1]][1], 204, self.pictures_location[self.list_option[choice][1]][2]))
-        return "none"
+        return "none", (self.score_qcm, self.best_score_game)
