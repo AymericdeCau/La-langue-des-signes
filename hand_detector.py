@@ -18,12 +18,6 @@ class SignDetector:
         #self.launch()
         self.cap = cv2.VideoCapture(0)
         self.detector = HandDetector(maxHands=1)
-
-        
-
-        
-
-
         self.success, self.img = self.cap.read()
         self.imgOutput = self.img.copy()
         self.hands, self.img = self.detector.findHands(self.img)
@@ -42,6 +36,7 @@ class SignDetector:
             self.success, self.img = self.cap.read()
             self.imgOutput = self.img.copy()
             self.hands, self.img = self.detector.findHands(self.img)
+            
             if self.hands:
                 hand = self.hands[0]
                 x, y, w, h = hand['bbox'] # permet d’obtenir les caractéristiques de la l’image centré sur la main
@@ -78,6 +73,11 @@ class SignDetector:
                 cv2.rectangle(self.imgOutput, (x-offset, y-offset),
                               (x + w+offset, y + h+offset), (255, 0, 255), 4) 
 
-
+            if cv2.waitKey(1) == 27: # vérifie si la touche escape n’est pas appuyée
+                break
             cv2.imshow("Detecteur de Signe", self.imgOutput) # affiche le rendu visuel de l’image
             cv2.waitKey(1)
+        
+        # Ferme les fenêtres
+        self.cap.release()
+        cv2.destroyWindow("Detecteur de Signe")

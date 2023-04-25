@@ -121,7 +121,7 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
             explanations2 = font_p.render("vous informer que ce programme ne collecte ni n'envoie aucune donnée de votre webcam.Nous vous recommandons de ",1,(255,)*3)
             explanations3 = font_p.render("mettre votre main devant la caméra avant de lancer le programme afin de garantir le bon lancement du programme.",1,(255,)*3)
             explanations4 = font_p.render("Nous espérons que cela vous permettra de profiter pleinement de notre programme en toute sécurité. Merci",1,(255,)*3)
-            accepter = SimpleButton((155,155,0), 800, 700, 250, 130,"Accepter",(255,)*3,font_h4)
+            accepter = SimpleButton((255,155,0), 800, 700, 250, 130,"Accepter",(255,)*3,font_h4)
             if accepter.isOver() :
                 accepter = SimpleButton((255,0,255), 800, 700, 250, 130,"Accepter",(255,)*3,font_h4)
                 pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
