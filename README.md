@@ -10,10 +10,12 @@
 
 <p>Notre application est composé de 4 boutons :
     -azd
-    -
-    -
-    -
+    <bl>-
+    <bl>-
+    <bl>-
  </p>
+![image](https://user-images.githubusercontent.com/122747450/234407163-d0609ba0-832d-4124-ab46-0bc5e661189d.png)
+
 Le fichier main est le fichier principale.
 Les fichiers tools et fonctions sont les fichiers qui contiennent les class et les fonctions.
 Le fichier course contient le code lié à la page cours de l'application, il est de même pour practice.py, hand_detector.py et settings.py.
