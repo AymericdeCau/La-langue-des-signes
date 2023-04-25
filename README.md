@@ -68,13 +68,13 @@ Le traducteur vous permet, à l'aide d'une caméra, de detecter les signes que v
 
 <h1>Réglages</h1>
 
-La partie réglages permet de changer les fps (images par seconde) de votre jeu
+La partie réglages permet de changer les fps (images par seconde) de votre jeu.
 
 ---
 
 <h1>Site Internet de l'application</h1>
 
-Notre site internet est composé de trois grandes parties que sont l'accueil, le cours et les exercices. Avec la partie cours, vous pouvez apprendre l'alphabet ou des mots de la langue des signes. Quant à elle, la partie exercice vous permet de répondre à des QCM sur les différents signes qui vous sont proposés dans la partie cours.
+Notre site internet est composé de trois grandes parties que sont l'accueil, le cours et les exercices. La partie exerciceAvec la partie cours, vous pouvez apprendre l'alphabet ou des mots de la langue des signes. Quant à elle, la partie exercice vous permet de répondre à des QCM sur les différents signes qui vous sont proposés dans la partie cours.
 
 ![image](Images_readme/Screenshot7.png)
 
