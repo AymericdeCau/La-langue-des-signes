@@ -1,1 +1,2 @@
-bienvenue : True
+Score QCM : 0
+Hight Score Game : 0
