@@ -130,23 +130,25 @@ class ComplexButton:
 # importation() permet de récupérer les données d'utilisation de l'utilisateur,
 # celle-ci sont stokée dans user_data.txt
 def importation():
-    fichier = open("user_data.txt", "a")
-    fichier.close()
-    with open("user_data.txt", "r") as fichier:
-        inventaire = [ligne.split(" : ") for ligne in fichier]
-    if len(inventaire) == 0:
-        running1 = "yes"
-        inventaire.append(["bienvenue",running1])
-    else: 
-        if inventaire[0][0] == "bienvenue": running1 = inventaire[0][1]
-        else: running1 = "yes"
-    return running1, inventaire
+    file = open("user_data.txt", "a")
+    file.close()
+    with open("user_data.txt", "r") as file:
+        inventory = [ligne.split(" : ") for ligne in file]
+    if len(inventory) != 2:
+        inventory = [0, 0]
+    elif len(inventory[0]) != 2 or len(inventory[1]) != 2:
+        inventory = [0, 0]
+    else:
+        inventory = [int(inventory[0][1]), int(inventory[1][1])]
+    return inventory
 
-# exportation() est la fonction associé à importation() qui souvegarde
+# export() est la fonction associé à importation() qui souvegarde
 # les données de l'utilisateur dans le fichier user_data.txt
-def exportation(inventaire):
-    with open("user_data.txt", "w") as fichier:
-        for variable in inventaire:
-            fichier.write(" : ".join(variable))
+def export(inventory):
+    print(inventory)
+    inventory = [["Score QCM", str(inventory[0])], ["Hight Score Game", str(inventory[1])]]
+    with open("user_data.txt", "w") as file:
+        for variable in inventory:
+            file.write(" : ".join(variable) + "\n")
 
 # Ce document est sous licence Creative Commons CC BY-SA
