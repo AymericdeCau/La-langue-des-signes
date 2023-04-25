@@ -71,24 +71,9 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
         for event in pygame.event.get():
             if event.type == pygame.QUIT: running, running_practice = False, False ; pygame.quit()
 
-
-    #while running_video:
-    #    if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
-    #        video = Settings(screen) # on crée notre menu
-    #        reload = video.run() # on le lance
-    #
-    #    index_of_next_page = video.checked() # on vérifie si l'utilisateur clique sur un des boutons
-    #    if index_of_next_page != "none": # si un des boutons est cliqués
-    #        running_video = False # on ferme la page du menu
-    #        reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
-    #        globals()["running_" + liste_name_page[index_of_next_page]] = True # on lance la page qui a été cliquée
-    #
-    #    pygame.display.flip()
-    #    for event in pygame.event.get():
-    #        if event.type == pygame.QUIT: running, running_video = False, False ; pygame.quit()
-
-
     while running_settings:
+        import requests
+
         if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
             settings = Settings(screen) # on crée notre menu
             reload = settings.run() # on le lance
@@ -134,7 +119,8 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
 
                     SDetector = SignDetector(screen)
                     reload = SDetector.run(True)
-                    running_video = False
+                    while reload == False:
+                        running_video = False
             pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
             if not pressed[0]:
                 onclick = False
@@ -144,6 +130,7 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
             screen.blit(explanations3,(900 - explanations3.get_width()//2,380))
             screen.blit(explanations4,(900 - explanations4.get_width()//2,460))
             accepter.draw(screen)
+
             
             
             pygame.display.flip()  # on rafraichie la page 
