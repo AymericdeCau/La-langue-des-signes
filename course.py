@@ -1,4 +1,4 @@
-# importation des bibliothèques nécessaires
+# -*- coding: utf-8 -*-
 import pygame
 from tools import SimpleButton
 import time
@@ -8,7 +8,7 @@ class Course:
     def __init__(self,screen):
         self.screen = screen
 
-        #initialise toutes les polices d’écritures
+        #initialise toutes les polices d’écritures car je n’importe que SimpleButton dans tools
         self.font_h1 = pygame.font.SysFont('helvetic', 150)
         self.font_h3 = pygame.font.SysFont('helvetic', 90)
         self.font_h4 = pygame.font.SysFont("helvetic", 70)
@@ -38,7 +38,6 @@ class Course:
         running_sub_lesson = True
         once_next, once_pre = True, True # variable qui permet que lorsque l’on appuie une fois on ne change pas de page et que l’on reffasse la même action
         while running_sub_lesson == True:
-            #self.screen.blit(self.background_course,(0,0))
             self.screen.fill(((10, 30, 60)))
             #charge les boutons
             previous_page_button = SimpleButton((0,125,255), 650, 350,50, 50," < ", (255,)*3,self.font_p, border_radius=20)
@@ -98,8 +97,6 @@ class Course:
                 if pressed[0]:
                     running_sub_lesson = False
 
-            #printing_lesson = pygame.image.load(self.list_course_picture[index]).convert()
-            #printing_lesson = pygame.transform.scale(printing_lesson, (printing_lesson.get_width()*8/10, printing_lesson.get_height()*8/10))
             #charge l’affichage de la leçon
             printing_lesson = pygame.image.load(self.list_course_picture[index]).convert()
             if self.list_course[index] != "Alphabet": # ne pas changer la taille de l’image car c’est la seul à ne pas avoir la même taille que les autres
