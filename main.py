@@ -78,6 +78,7 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
 
         index_of_next_page, fps = settings.checked() # on vérifie si l'utilisateur clique sur un des boutons
         clock.tick(fps)
+        print("fps :", fps)
         if index_of_next_page != "none": # si un des boutons est cliqués
             running_settings = False # on ferme la page du menu
             reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
