@@ -1,4 +1,4 @@
-![logo](iages_readme/logo.jpg)
+![logo](images_readme/logo.jpg)
 
 
 ---
