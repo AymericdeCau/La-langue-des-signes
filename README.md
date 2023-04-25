@@ -8,18 +8,20 @@
 ---
 <h1>Caractéristiques de l'application</h1>
 
-<p>Notre application est composé de 4 boutons :
+Notre application est composé de 4 boutons :
     
-    - Exercices
-    - Cours 
-    - Traducteur
-    - Réglages
- </p>
- 
+   - Exercices
+   - Cours 
+   - Traducteur
+   - Réglages
+
  
 ![image](Images_readme/Screenshot1.png)
 
+---
+<h1>Exercices</h1>
 
+    
 
 Le fichier main est le fichier principale.
 Les fichiers tools et fonctions sont les fichiers qui contiennent les class et les fonctions.
