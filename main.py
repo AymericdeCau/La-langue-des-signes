@@ -119,8 +119,9 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
 
                     SDetector = SignDetector(screen)
                     reload = SDetector.run(True)
-                    while reload == False:
+                    while reload:
                         running_video = False
+                        break
             pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
             if not pressed[0]:
                 onclick = False
