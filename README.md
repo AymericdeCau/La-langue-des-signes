@@ -15,6 +15,8 @@
     - Traducteur
     - Réglages
  </p>
+ 
+ 
 ![image](Images_readme/Screenshot1.png)
 
 
