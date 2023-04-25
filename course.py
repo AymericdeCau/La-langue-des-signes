@@ -18,7 +18,7 @@ class Course:
         self.list_course_picture = [
             "./assets/picturesforcourse/alphabetFSL.png",
             "./assets/picturesforcourse/Action.jpg",
-            "./assets/picturesforcourse/Alimentation et Divers.jpg",
+            "./assets/picturesforcourse/AlimentationetDivers.jpg",
             "./assets/picturesforcourse/BaseetLieux.jpg",
             "./assets/picturesforcourse/Famille.jpg",
             "./assets/picturesforcourse/Santé.jpg",
