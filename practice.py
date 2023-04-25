@@ -159,7 +159,7 @@ class Practice:
                 visible_sign_list.append(temp_sign_list[random_sign])
                 temp_sign_list.pop(random_sign)
             
-            difficulty = 550 if self.level[0] == 0 else 450 if self.level[0] == 1 else 410
+            difficulty = 550 if self.level[0] == 0 else 500 if self.level[0] == 1 else 450
             self.score = 0
 
             block_color = (50, 50, 100)
