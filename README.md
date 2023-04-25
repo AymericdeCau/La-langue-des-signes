@@ -62,6 +62,6 @@ La partie cours vous permet d'apprendre les mots usuels. Chaque fiche de cours e
 
 Le traducteur vous permet, à l'aide d'une caméra, de detecter les signes que vous faites.
 
-![image](Images_readme/Screenshot5.png)
+![image](Images_readme/Screenshot6.png)
 
 Ce document est sous licence Creative Commons CC BY-SA 4.0 : https://creativecommons.org/licenses/by-sa/4.0/
