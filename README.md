@@ -8,13 +8,13 @@
 ---
 <h1>Caractéristiques de l'application</h1>
 
-Notre application est composé de 4 boutons :
+<p>Notre application est composé de 4 boutons :
     
    - Exercices
    - Cours 
    - Traducteur
    - Réglages
-
+</p>
  
 ![image](Images_readme/Screenshot1.png)
 
