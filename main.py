@@ -72,13 +72,12 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
             if event.type == pygame.QUIT: running, running_practice = False, False ; pygame.quit()
 
     while running_settings:
-        import requests
-
         if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
-            settings = Settings(screen) # on crée notre menu
+            settings = Settings(screen, 60) # on crée notre menu
             reload = settings.run() # on le lance
 
-        index_of_next_page = settings.checked() # on vérifie si l'utilisateur clique sur un des boutons
+        index_of_next_page, fps = settings.checked() # on vérifie si l'utilisateur clique sur un des boutons
+        clock.tick(fps)
         if index_of_next_page != "none": # si un des boutons est cliqués
             running_settings = False # on ferme la page du menu
             reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
