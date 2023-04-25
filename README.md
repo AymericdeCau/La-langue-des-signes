@@ -37,13 +37,13 @@ Notre application est composé de 4 boutons :
 La partie exercice est composé de deux parties, la partie questionnaire et la partie jeu.
 ---
 
-<h3>Questionnaire</h3>
+<h2>Questionnaire</h2>
 
 ![image](Images_readme/Screenshot3.png)
 
-<h5>Le questionnaire permet à l'utilisateur de choisir entre plusieurs images qui correspond chacune à un mot. L'utilisateur aura soit un texte rouge avec la bonne réponse si il se trompe ou soit un texte vert disant que l'utilisateur a gagné.</h5>
+<h4>Le questionnaire permet à l'utilisateur de choisir entre plusieurs images qui correspond chacune à un mot. L'utilisateur aura soit un texte rouge avec la bonne réponse si il se trompe ou soit un texte vert disant que l'utilisateur a gagné.</h5>
 ---
-<h3>Jeu</h3>
+<h2>Jeu</h2>
 
 ![image](Images_readme/Screenshot4.png)
 
