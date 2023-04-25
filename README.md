@@ -25,6 +25,8 @@
 ---
 <h1>Exercices</h1>
 
+
+![image](Images_readme/Screenshot2.png)
     
 
 Le fichier main est le fichier principale.
