@@ -46,7 +46,7 @@ class Home:
             self.screen.blit(text, ((self.practice.coor[0][0] + (self.practice.coor[1][0] + self.practice.coor[2][0])/2)/2 - text.get_width()/2, (self.practice.coor[1][1] + self.practice.coor[2][1])/2 - text.get_height()))
             text = font_h2.render("Cours", 1, (255,255,255))
             self.screen.blit(text, (((self.course.coor[0][0] + self.course.coor[3][0])/2 + (self.course.coor[1][0] + self.course.coor[2][0])/2)/2 - text.get_width()/2, (self.course.coor[1][1] + self.course.coor[2][1])/2 - text.get_height()/2))
-            text = font_h2.render("Vidéo", 1, (255,255,255))
+            text = font_h2.render("Traducteur", 1, (255,255,255))
             self.screen.blit(text, (((self.video.coor[0][0] + self.video.coor[3][0])/2 + (self.video.coor[1][0] + self.video.coor[2][0])/2)/2 - text.get_width()/2, (self.video.coor[1][1] + self.video.coor[2][1])/2 - text.get_height()/2))
             self.screen.blit(self.nut, ((self.settings.coor[0][0] + self.settings.coor[1][0])/2 - self.nut.get_width()/2, (self.settings.coor[1][1] + self.settings.coor[2][1])/2 - self.nut.get_height()/2))
     
