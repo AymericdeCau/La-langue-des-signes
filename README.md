@@ -64,4 +64,31 @@ Le traducteur vous permet, à l'aide d'une caméra, de detecter les signes que v
 
 ![image](Images_readme/Screenshot6.png)
 
+---
+
+<h1>Réglages</h1>
+
+La partie réglages permet de changer les fps (images par seconde) de votre jeu
+
+---
+
+<h1>Site Internet de l'application</h1>
+
+Notre site internet est composé de trois grandes parties que sont l'accueil, le cours et les exercices. Avec la partie cours, vous pouvez apprendre l'alphabet ou des mots de la langue des signes. Quant à elle, la partie exercice vous permet de répondre à des QCM sur les différents signes qui vous sont proposés dans la partie cours.
+
+![image](Images_readme/Screenshot7.png)
+
+---
+
+<h1>Prérequis pour utiliser notre application</h1>
+
+Pour utiliser notre application, il vous faut python ainsi que les modules pythonpygame (affichage graphique), opencv-python (détecteur de main et traitement de l’image), médiapipe (obtentioon du résultat de la webcam), tensor flow (création de l’IA détectant les signes), cv zone (permet de compresser et d’utiliser l’IA) et enfin numpy (qui permet de créer une image blanche de 300px sur 300px ou s’ajoute l’image de la
+webcam). Si vous ne voulez pas utiliser la caméra, il faut commenter la ligne 8 de main.py.
+
+---
+
+<h1>Licence</h1>
+
 Ce document est sous licence Creative Commons CC BY-SA 4.0 : https://creativecommons.org/licenses/by-sa/4.0/
+
+
