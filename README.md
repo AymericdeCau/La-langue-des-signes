@@ -15,7 +15,7 @@
     - Traducteur
     - Réglages
  </p>
-![image](/Images pour le read me/logo.jpg)
+![image](Images_readme/Screenshot1.png)
 
 
 
