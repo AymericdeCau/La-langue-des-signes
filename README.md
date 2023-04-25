@@ -32,6 +32,10 @@ La partie exercice est composé de deux parties, la partie questionnaire et la p
 ---
 
 <h3>Questionnaire</h3>
+
+![image](Images_readme/Screenshot3.png)
+
+
 Le fichier main est le fichier principale.
 Les fichiers tools et fonctions sont les fichiers qui contiennent les class et les fonctions.
 Le fichier course contient le code lié à la page cours de l'application, il est de même pour practice.py, hand_detector.py et settings.py.
