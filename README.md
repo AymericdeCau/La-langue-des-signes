@@ -41,7 +41,7 @@ La partie exercice est composé de deux parties, la partie questionnaire et la p
 
 ![image](Images_readme/Screenshot3.png)
 
-<h4>Le questionnaire permet à l'utilisateur de choisir entre plusieurs images qui correspond chacune à un mot. L'utilisateur aura soit un texte rouge avec la bonne réponse si il se trompe ou soit un texte vert disant que l'utilisateur a gagné.</h5>
+<h4>Le questionnaire permet à l'utilisateur de choisir entre plusieurs images qui correspond chacune à un mot. L'utilisateur aura soit un texte rouge avec la bonne réponse si il se trompe ou soit un texte vert disant que l'utilisateur a gagné.</h4>
 ---
 <h2>Jeu</h2>
 
