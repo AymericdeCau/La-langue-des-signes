@@ -148,3 +148,5 @@ def exportation(inventaire):
     with open("user_data.txt", "w") as fichier:
         for variable in inventaire:
             fichier.write(" : ".join(variable))
+
+# Ce document est sous licence Creative Commons CC BY-SA

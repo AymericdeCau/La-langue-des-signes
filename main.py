@@ -140,3 +140,4 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
         reload = 2
         running_home = True
 
+# Ce document est sous licence Creative Commons CC BY-SA

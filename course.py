@@ -157,3 +157,4 @@ class Course:
             self.screen.blit(title_part, (750, 80))
             pygame.display.flip()  # on rafraichie la page régulièrement
 
+# Ce document est sous licence Creative Commons CC BY-SA

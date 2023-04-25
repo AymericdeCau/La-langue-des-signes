@@ -67,3 +67,4 @@ class Home:
                     self.refresh()
                     if b == "settings": self.nut = pygame.transform.rotate(self.nut, 90) # si le bouton en question est le bouton settings on le fait tourner
         return False
+# Ce document est sous licence Creative Commons CC BY-SA

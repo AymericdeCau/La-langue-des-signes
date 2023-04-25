@@ -85,3 +85,4 @@ class SignDetector:
             return True
         except:
             return False
+# Ce document est sous licence Creative Commons CC BY-SA

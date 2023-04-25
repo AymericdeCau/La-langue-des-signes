@@ -33,4 +33,4 @@ class Settings:
                     b.unselect(self.screen) # on le remet en mode non sélection, c'est à dire que l'on remet l'arrière plan initiale
         return "none"
 
-    
+# Ce document est sous licence Creative Commons CC BY-SA
