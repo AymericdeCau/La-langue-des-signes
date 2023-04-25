@@ -55,6 +55,6 @@ En jouant à notre jeu vous incarnez notre mascotte, Bobov, qui doit trouver le 
 
 <h1>Cours</h1>
 
-...
+azdzadad
 
 Ce document est sous licence Creative Commons CC BY-SA 4.0 : https://creativecommons.org/licenses/by-sa/4.0/
