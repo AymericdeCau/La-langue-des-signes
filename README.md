@@ -1,7 +1,7 @@
 ![logo](https://user-images.githubusercontent.com/122747450/234405151-1faad0c3-facc-4ec8-a7fc-a781479b9610.jpg)
 
 
-
+---
 
 Le fichier main est le fichier principale.
 Les fichiers tools et fonctions sont les fichiers qui contiennent les class et les fonctions.
