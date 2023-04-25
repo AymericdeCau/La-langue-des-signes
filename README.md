@@ -54,6 +54,7 @@ En jouant à notre jeu vous incarnez notre mascotte, Bobov, qui doit trouver le 
 
 La partie cours vous permet d'apprendre les mots usuels. Chaque fiche de cours est classée par catégorie
 
+
 ![image](Images_readme/Screenshot5.png)
 
 
