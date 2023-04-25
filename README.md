@@ -21,9 +21,6 @@ Notre application est composé de 4 boutons :
    - Traducteur
    - Réglages
     
-
- 
- 
  
 ![image](Images_readme/Screenshot1.png)
 
@@ -41,7 +38,7 @@ La partie exercice est composé de deux parties, la partie questionnaire et la p
 
 ![image](Images_readme/Screenshot3.png)
 
-<h3>Le questionnaire permet à l'utilisateur de choisir entre plusieurs images qui correspond chacune à un mot. L'utilisateur aura soit un texte rouge avec la bonne réponse si il se trompe ou soit un texte vert disant que l'utilisateur a gagné.</h3>
+<h3>Le questionnaire vous permet de choisir entre plusieurs images qui correspond chacune à un mot. L'utilisateur aura soit un texte rouge avec la bonne réponse si il se trompe ou soit un texte vert disant que l'utilisateur a gagné.</h3>
 
 ---
 
@@ -55,6 +52,10 @@ En jouant à notre jeu vous incarnez notre mascotte, Bobov, qui doit trouver le 
 
 <h1>Cours</h1>
 
-azdzadad
+La partie cours vous permet d'apprendre les mots usuels. Chaque fiche de cours est classée par catégorie
+
+![image](Images_readme/Screenshot5.png)
+
+
 
 Ce document est sous licence Creative Commons CC BY-SA 4.0 : https://creativecommons.org/licenses/by-sa/4.0/
