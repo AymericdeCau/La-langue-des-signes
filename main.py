@@ -11,7 +11,8 @@ from hand_detector import SignDetector
 pygame.init()
 
 clock = pygame.time.Clock()
-clock.tick(60)
+fps = 60
+clock.tick(fps)
 
 pygame.display.set_caption("Le language des signes")
 pygame.display.set_icon(pygame.image.load("./assets/picturesforhome/logo.png"))
@@ -22,12 +23,12 @@ screen_height = screen.get_height()
 reload = 2 # 0=nul, 1=rafraichissement, 2=initialisation
 
 running = True
-running_home = bool(importation()[0]) # importation est une fonction définie dans function.py permettant de 
-inventaire = importation()[1]
+running_home = True
 running_practice = False
 running_course = False
 running_video = False
 running_settings = False
+inventory = importation()
 liste_name_page = ["home", "practice", "course", "video", "settings"]
 
 while running: # boucle while principle qui permet à la fenêtre de rester ouverte comme sur toute fenêtre pygame
@@ -58,10 +59,10 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
 
     while running_practice:
         if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
-            practice = Practice(screen) # on crée notre menu
+            practice = Practice(screen, inventory) # on crée notre menu
             reload = practice.run() # on le lance
 
-        index_of_next_page = practice.checked() # on vérifie si l'utilisateur clique sur un des boutons menant à une autre page
+        index_of_next_page, inventory = practice.checked() # on vérifie si l'utilisateur clique sur un des boutons menant à une autre page
         if index_of_next_page != "none": # si un des boutons est cliqués
             running_practice = False # on ferme la page du menu
             reload = 2 # on met reload en mode initialisation pour l'initiatlisation de la prochaine page
@@ -69,7 +70,10 @@ while running: # boucle while principle qui permet à la fenêtre de rester ouve
 
         pygame.display.flip()
         for event in pygame.event.get():
-            if event.type == pygame.QUIT: running, running_practice = False, False ; pygame.quit()
+            if event.type == pygame.QUIT:
+                running, running_practice = False, False
+                export((inventory))
+                pygame.quit()
 
     while running_settings:
         if reload == 2: # initialisation de la page quand l'utilisateur l'ouvre
