@@ -7,7 +7,7 @@ import numpy as np
 import math
 import pygame
 from tools import *
-import tensorflow
+
 
 
 
@@ -44,16 +44,16 @@ class SignDetector:
             self.hands, self.img = self.detector.findHands(self.img)
             if self.hands:
                 hand = self.hands[0]
-                x, y, w, h = hand['bbox']
+                x, y, w, h = hand['bbox'] # permet d’obtenir les caractéristiques de la l’image centré sur la main
 
-                imgWhite = np.ones((imgSize, imgSize, 3), np.uint8) * 255
-                imgCrop = self.img[y - offset:y + h + offset, x - offset:x + w + offset]
+                imgWhite = np.ones((imgSize, imgSize, 3), np.uint8) * 255 # crée une image carré blanche pour pouvoir peut importe la taille de la main obtenu par la webcam d’avoir une image de 300px par 300px
+                imgCrop = self.img[y - offset:y + h + offset, x - offset:x + w + offset] # permet que l’image est une marge pour mieux observer les extrémités des doigts
 
                 imgCropShape = imgCrop.shape
 
                 aspectRatio = h / w # cée une variable pour le ratio de la main et de l’image centré sur cette main
 
-                if aspectRatio > 1:
+                if aspectRatio > 1: # permet de définir si la partie non visible du carré crée doit avoir en haut et bas du blanc ou à droite et à gauche
                     k = imgSize / h
                     wCal = math.ceil(k * w)
                     imgResize = cv2.resize(imgCrop, (wCal, imgSize))
@@ -73,11 +73,11 @@ class SignDetector:
 
                 cv2.rectangle(self.imgOutput, (x - offset, y - offset-50),
                               (x - offset+90, y - offset-50+50), (255, 0, 255), cv2.FILLED)
-                cv2.putText(self.imgOutput, labels[index], (x, y -26), cv2.FONT_HERSHEY_COMPLEX, 1.7, (255, 255, 255), 2)
-                cv2.putText(self.imgOutput, "Echap pour quitter",(0,20),cv2.FONT_HERSHEY_COMPLEX, 1, (255,)*3, 2)
+                cv2.putText(self.imgOutput, labels[index], (x, y -26), cv2.FONT_HERSHEY_COMPLEX, 1.7, (255, 255, 255), 2) # affiche le signe que l’on fait grâce au dossier Model ou une IA à pu s’entrainer
+                cv2.putText(self.imgOutput, "Echap pour quitter",(0,20),cv2.FONT_HERSHEY_COMPLEX, 1, (255,)*3, 2) # explique comment sortir de cette parti
                 cv2.rectangle(self.imgOutput, (x-offset, y-offset),
-                              (x + w+offset, y + h+offset), (255, 0, 255), 4)
+                              (x + w+offset, y + h+offset), (255, 0, 255), 4) 
 
 
-            cv2.imshow("Detecteur de Signe", self.imgOutput)
+            cv2.imshow("Detecteur de Signe", self.imgOutput) # affiche le rendu visuel de l’image
             cv2.waitKey(1)
