@@ -52,11 +52,16 @@ En jouant à notre jeu vous incarnez notre mascotte, Bobov, qui doit trouver le 
 
 <h1>Cours</h1>
 
-La partie cours vous permet d'apprendre les mots usuels. Chaque fiche de cours est classée par catégorie
-
+La partie cours vous permet d'apprendre les mots usuels. Chaque fiche de cours est classée par catégorie.
 
 ![image](Images_readme/Screenshot5.png)
 
+---
 
+<h1>Traducteur</h1>
+
+Le traducteur vous permet, à l'aide d'une caméra, de detecter les signes que vous faites.
+
+![image](Images_readme/Screenshot5.png)
 
 Ce document est sous licence Creative Commons CC BY-SA 4.0 : https://creativecommons.org/licenses/by-sa/4.0/
