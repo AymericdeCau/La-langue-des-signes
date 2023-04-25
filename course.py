@@ -14,8 +14,9 @@ class Course:
         self.font_h4 = pygame.font.SysFont("helvetic", 70)
         self.font_p = pygame.font.SysFont('arrial', 30)
 
-        self.list_course = ["Action","Alimentation","base et lieux","Famille","Santé","Sentiments","Temps","Vie en Société"]
+        self.list_course = ["Alphabet","Action","Alimentation","base et lieux","Famille","Santé","Sentiments","Temps","Vie en Société"]
         self.list_course_picture = [
+            "./assets/picturesforcourse/alphabetFSL.png",
             "./assets/picturesforcourse/Action.jpg",
             "./assets/picturesforcourse/Alimentation et Divers.jpg",
             "./assets/picturesforcourse/BaseetLieux.jpg",
@@ -33,14 +34,9 @@ class Course:
         """
         la méthode run_sub_lesson est la méthode qui  tourne et charge l’affichage de la leçon cliqué et le sommaire à cotés
         """
-
-        #charge l’affichage de la leçon
-        printing_lesson = pygame.image.load(self.list_course_picture[index]).convert()
-        printing_lesson = pygame.transform.scale(printing_lesson, (printing_lesson.get_width()*2/3, printing_lesson.get_height()*2/3))
-
         title_of_the_lesson = self.font_h3.render(self.list_course[index],1,(255,0,0))
         running_sub_lesson = True
-        once_next, once_pre = True, True # variable
+        once_next, once_pre = True, True # variable qui permet que lorsque l’on appuie une fois on ne change pas de page et que l’on reffasse la même action
         while running_sub_lesson == True:
             #self.screen.blit(self.background_course,(0,0))
             self.screen.fill(((10, 30, 60)))
@@ -102,12 +98,19 @@ class Course:
                 if pressed[0]:
                     running_sub_lesson = False
 
+            #printing_lesson = pygame.image.load(self.list_course_picture[index]).convert()
+            #printing_lesson = pygame.transform.scale(printing_lesson, (printing_lesson.get_width()*8/10, printing_lesson.get_height()*8/10))
+            #charge l’affichage de la leçon
             printing_lesson = pygame.image.load(self.list_course_picture[index]).convert()
-            printing_lesson = pygame.transform.scale(printing_lesson, (printing_lesson.get_width()*8/10, printing_lesson.get_height()*8/10))
+            if self.list_course[index] != "Alphabet": # ne pas changer la taille de l’image car c’est la seul à ne pas avoir la même taille que les autres
+                printing_lesson = pygame.transform.scale(printing_lesson, (printing_lesson.get_width()*8/10, printing_lesson.get_height()*8/10)) # permet de modifier la taille de l’image pour quelle rentre dans l’écran
             title_of_the_lesson = self.font_h3.render(self.list_course[index],1,(255,0,0))
 
             self.screen.blit(title_of_the_lesson,(150,200))
-            self.screen.blit(printing_lesson,(710,-12))
+            if self.list_course[index] != "Alphabet":
+                self.screen.blit(printing_lesson,(710,-12))
+            else:
+                self.screen.blit(printing_lesson,(760,50))
             previous_page_button.draw(self.screen)
             next_page_button.draw(self.screen)
             self.home.draw(self.screen)
@@ -141,9 +144,9 @@ class Course:
             
             for i in range(len(self.list_course)): # affiche et crée le sommaire 
                 title_of_the_lesson = self.font_h3.render(self.list_course[i],1,(10, 30, 60))
-                cours_affichage = SimpleButton((255,)*3, 900 - title_of_the_lesson.get_width()//2, 270 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
+                cours_affichage = SimpleButton((255,)*3, 900 - title_of_the_lesson.get_width()//2, 200 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
                 if cours_affichage.isOver():
-                    cours_affichage = SimpleButton((250,250,00), 900 - title_of_the_lesson.get_width()//2, 270 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
+                    cours_affichage = SimpleButton((250,250,00), 900 - title_of_the_lesson.get_width()//2, 200 + i*75, title_of_the_lesson.get_width(), title_of_the_lesson.get_height())
                     pressed = pygame.mouse.get_pressed() # on récupère les cliques de la souris
                     if pressed[0] and onclick:
                         self.run_sub_lesson(i)
@@ -152,8 +155,8 @@ class Course:
 
                 
                 cours_affichage.draw(self.screen)
-                self.screen.blit(title_of_the_lesson,(900 - title_of_the_lesson.get_width()//2, 270 + i*75))
+                self.screen.blit(title_of_the_lesson,(900 - title_of_the_lesson.get_width()//2, 200 + i*75))
             self.home.draw(self.screen)
-            self.screen.blit(title_part, (750, 120))
+            self.screen.blit(title_part, (750, 80))
             pygame.display.flip()  # on rafraichie la page régulièrement
 
