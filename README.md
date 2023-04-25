@@ -47,7 +47,7 @@ La partie exercice est composé de deux parties, la partie questionnaire et la p
 
 ![image](Images_readme/Screenshot4.png)
 
-En jouant à notre jeu, vous incarnez notre mascotte
+En jouant à notre jeu vous incarnez notre mascotte, Bob, qui doit trouver le nom de l'image qui s'affiche et qui doit esquiver les blocs pour gagner
 
 ...
 
