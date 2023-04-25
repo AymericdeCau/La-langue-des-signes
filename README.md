@@ -5,3 +5,4 @@ Les images utilisées dans cours sont stokés dans assets/pictures for course.
 Les images utilisées dans home sont stokés dans assets/pictures for home.
 ...
 
+Ce document est sous licence Creative Commons CC BY-SA 4.0 : https://creativecommons.org/licenses/by-sa/4.0/
