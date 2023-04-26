@@ -40,7 +40,7 @@ La partie exercice est composé de deux parties, la partie questionnaire et la p
 
 ![image](assets/picturesforREADME/Screenshot3.png)
 
-<h3>Le questionnaire vous permet de choisir entre plusieurs images qui correspond chacune à un mot. L'utilisateur aura soit un texte rouge avec la bonne réponse si il se trompe ou soit un texte vert disant que l'utilisateur a gagné.</h3>
+<h3>Le questionnaire vous permet de vous testez sur vos connaissances, l'utilisateur doit trouvé le signe correspondant à un mot, si il trouve la bonne réponse, on le félicite sinon on lui donne le signe correct.</h3>
 
 ---
 
@@ -48,7 +48,7 @@ La partie exercice est composé de deux parties, la partie questionnaire et la p
 
 ![image](assets/picturesforREADME/Screenshot4.png)
 
-En jouant à notre jeu vous incarnez notre mascotte, Bobov, qui doit trouver le nom de l'image qui s'affiche et qui doit esquiver les blocs pour gagner
+En jouant à notre jeu vous incarnez notre mascotte, Bobov, qui doit trouver le nom de l'image qui s'affiche et qui doit esquiver les blocs pour gagner.
 
 ---
 
@@ -76,7 +76,7 @@ La partie réglages permet de changer les fps (images par seconde) de votre jeu.
 
 <h1>Site Internet de l'application</h1>
 
-Notre site internet est composé de trois grandes parties que sont l'accueil, le cours et les exercices. La partie exerciceAvec la partie cours, vous pouvez apprendre l'alphabet ou des mots de la langue des signes. Quant à elle, la partie exercice vous permet de répondre à des QCM sur les différents signes qui vous sont proposés dans la partie cours.
+Notre site internet est composé de trois grandes parties que sont l'accueil, le cours et les exercices. Avec la partie cours, vous pouvez apprendre l'alphabet ou des mots de la langue des signes. Quant à elle, la partie exercice vous permet de répondre à des QCM sur les différents signes qui vous sont proposés dans la partie cours.
 
 ![image](assets/picturesforREADME/Screenshot7.png)
 
@@ -84,8 +84,8 @@ Notre site internet est composé de trois grandes parties que sont l'accueil, le
 
 <h1>Prérequis pour utiliser notre application</h1>
 
-Pour utiliser notre application, il vous faut python ainsi que les modules pythonpygame (affichage graphique), opencv-python (détecteur de main et traitement de l’image), médiapipe (obtentioon du résultat de la webcam), tensor flow (création de l’IA détectant les signes), cv zone (permet de compresser et d’utiliser l’IA) et enfin numpy (qui permet de créer une image blanche de 300px sur 300px ou s’ajoute l’image de la
-webcam). Si vous ne voulez pas utiliser la caméra, il faut commenter la ligne 8 de main.py.
+Pour utiliser notre application, il vous faut python ainsi que les modules python pygame (affichage graphique), opencv-python (détecteur de main et traitement de l’image), médiapipe (obtentioon du résultat de la webcam), tensor flow (création de l’IA détectant les signes), cv zone (permet de compresser et d’utiliser l’IA) et enfin numpy (qui permet de créer une image blanche de 300px sur 300px ou s’ajoute l’image de la
+webcam). Si vous ne voulez pas installé les 5 derniers modules, vous ne pourrez pas utiliser la caméra mais vous pourez tout de même testé l'application en commentant la ligne 8 de main.py.
 
 ---
 
