@@ -24,21 +24,21 @@ Notre application est composé de 4 boutons :
    - Réglages
     
  
-![image](assets/picturesforREADME/Screenshot1.png)
+![image](Application_LaLangueMuette/assets/picturesforREADME/Screenshot1.png)
 
 
 ---
 <h1>Exercices</h1>
 
 
-![image](assets/picturesforREADME/Screenshot2.png)
+![image](Application_LaLangueMuette/assets/picturesforREADME/Screenshot2.png)
     
 La partie exercice est composé de deux parties, la partie questionnaire et la partie jeu.
 ---
 
 <h2>Questionnaire</h2>
 
-![image](assets/picturesforREADME/Screenshot3.png)
+![image](Application_LaLangueMuette/assets/picturesforREADME/Screenshot3.png)
 
 <h3>Le questionnaire vous permet de vous testez sur vos connaissances, l'utilisateur doit trouvé le signe correspondant à un mot, si il trouve la bonne réponse, on le félicite sinon on lui donne le signe correct.</h3>
 
@@ -46,7 +46,7 @@ La partie exercice est composé de deux parties, la partie questionnaire et la p
 
 <h2>Jeu</h2>
 
-![image](assets/picturesforREADME/Screenshot4.png)
+![image](Application_LaLangueMuette/assets/picturesforREADME/Screenshot4.png)
 
 En jouant à notre jeu vous incarnez notre mascotte, Bobov, qui doit trouver le nom de l'image qui s'affiche et qui doit esquiver les blocs pour gagner.
 
@@ -56,7 +56,7 @@ En jouant à notre jeu vous incarnez notre mascotte, Bobov, qui doit trouver le 
 
 La partie cours vous permet d'apprendre les mots usuels. Chaque fiche de cours est classée par catégorie.
 
-![image](assets/picturesforREADME/Screenshot5.png)
+![image](Application_LaLangueMuette/assets/picturesforREADME/Screenshot5.png)
 
 ---
 
@@ -64,7 +64,7 @@ La partie cours vous permet d'apprendre les mots usuels. Chaque fiche de cours e
 
 Le traducteur vous permet, à l'aide d'une caméra, de detecter les signes que vous faites.
 
-![image](assets/picturesforREADME/Screenshot6.png)
+![image](Application_LaLangueMuette/assets/picturesforREADME/Screenshot6.png)
 
 ---
 
@@ -80,7 +80,7 @@ Notre site internet est composé de trois grandes parties que sont l'accueil, le
 Le fichier index.html correspond a la page d'accueil du site web.
 
 
-![image](assets/picturesforREADME/Screenshot7.png)
+![image](Application_LaLangueMuette/assets/picturesforREADME/Screenshot7.png)
 
 ---
 
