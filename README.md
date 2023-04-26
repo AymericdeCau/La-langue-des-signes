@@ -1,4 +1,4 @@
-![logo](Images_readme/logo.jpg)
+![logo](assets/picturesforREADME/logo.jpg)
 
 
 ---
