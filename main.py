@@ -13,7 +13,7 @@ clock = pygame.time.Clock()
 fps = 60
 clock.tick(fps)
 
-pygame.display.set_caption("Le language des signes")
+pygame.display.set_caption("La Langue Muette")
 pygame.display.set_icon(pygame.image.load("./assets/picturesforhome/logo.png"))
 screen = pygame.display.set_mode((1800, 900))
 
