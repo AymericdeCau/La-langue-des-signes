@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import pygame
 from tools import *
-from function import *
 from home import Home
 from course import Course
 from practice import Practice
