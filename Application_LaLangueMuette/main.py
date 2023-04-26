@@ -5,7 +5,7 @@ from home import Home
 from course import Course
 from practice import Practice
 from settings import Settings
-#from hand_detector import SignDetector
+from hand_detector import SignDetector
 
 pygame.init()
 
