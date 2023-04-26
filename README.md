@@ -22,7 +22,7 @@ Notre application est composé de 4 boutons :
    - Réglages
     
  
-![image](Images_readme/Screenshot1.png)
+![image](assets/picturesforREADME/Screenshot1.png)
 
 
 ---
