@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language des signes</title>
+    <link rel="shortcut icon" href="asserts/logo.jpg" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="type1">
+    <!-- Contrairement aux autres pages, la page d'acceuil est introduite par une image que l'on recouvre en descendant
+                        dans la page, c'est donc une page classé de type 1. Les pages  standards sont classées type 2 -->
+
+    <header>
+        <nav> <!-- Le bandeau de navigation qui permet de passer de page en page -->
+            <ul class="bandeau">
+                <li id="logo"><a href="./index.html" title="Page d'accueil de LLM"><img src="./asserts/logo.jpg"
+                            class="logo" alt="logo"></a></li>
+                <li id="accueil"><a href="./index.html" title="Page d'accueil de LLM" class="bouton">Accueil</a></li>
+                <!-- A largeur de page normal ce bouton n'est pas visible -->
+                <li id="apprendre">
+                    <!-- Par soucis d'esthétisme, quand la page est réduite l'unique bonton "Apprendre" remplace les boutons "Cours" et "Exercices" -->
+                    <a class="bouton">Apprendre</a>
+                    <div class="ruban_déroule">
+                        <ul class="liste_déroule">
+                            <li><a href="./cours.html" class="menu_déroule" title="Aller à la page Cours">Cours</a></li>
+                            <li><a href="./exercice.html" class="menu_déroule"
+                                    title="Aller à la page Exercices">Exercices</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li id="cours">
+                    <a href="./cours.html" class="bouton" title="Aller à la page Cours">Cours</a>
+                    <div class="ruban_déroule">
+                        <ul class="liste_déroule">
+                            <li><a href="./A-H.html" class="menu_déroule">Les lettres de A à H</a></li>
+                            <li><a href="./I-P.html" class="menu_déroule">Les lettres de I à P</a></li>
+                            <li><a href="./Q-Z.html" class="menu_déroule">Les lettres de Q à Z</a></li>
+                            <li><a href="./0-9.html" class="menu_déroule">Les chiffres de 0 à 9</a></li>
+                            <li><a href="./Exp_courantes_1.html" class="menu_déroule">Expressions courantes n°1</a></li>
+                            <li><a href="./Exp_courantes_2.html" class="menu_déroule">Expressions courantes n°2</a></li>
+                            <li><a href="./Les émotions.html" class="menu_déroule">Les émotions</a></li>
+                            <li><a href="./Les verbes usuels.html" class="menu_déroule">Les verbes usuels</a></li>
+                        </ul>
+                </li>
+
+                <li id="exercice">
+                    <a href="./exercice.html" class="bouton" title="Aller à la page Exercices">Exercices</a>
+                    <div class="ruban_déroule">
+                        <ul class="liste_déroule">
+                            <li><a href="./Exercice_1.html" class="menu_déroule">Les caractères de base</a></li>
+                            <li><a href="./Exercice_2.html" class="menu_déroule">Les quelques mots pour discuter</a>
+                            </li>
+                            <li><a href="./Exercice_Total.html" class="menu_déroule">Tout à la fois</a></li>
+                        </ul>
+                </li>
+                <li id="journal"><a href="./journal.html" class="bouton" title="Aller à la page Journal">Crédit</a>
+                </li>
+                <li id="connexion"><a href="./connexion.html" id="b_connexion" title="Connexion">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- <p class="entreprise">La Langue Muette</p> -->
+    <main class="exposition"> <!-- Encore une fois la page d'acceuil se distingue du modèle standard de page. La page d'acceuil étant plus longue que les autres,
+         un sommaire a été rajouté à gauche pour se déplacer dans la page. -->
+
+        <div id="gauche"> <!-- On est ici dans la partie de gauche.-->
+            <div class="sommaire">
+                <div class="sommaire_head">
+                    <span>Sommaire</span>
+                    <a onclick=sommaireOuverture() class="non_lien"><img id="flèche_sommaire"
+                            src="./asserts/flèche-avant.png" alt="flèche-avant" width="25px"
+                            title="développer le sommaire"></a>
+                    <!-- Le sommaire peut être ouvert ou fermé selon le bon vouloir de l'utilisateur. sommaireOuverture() est une fonction JavaScript qui s'occupe 
+                        de gérer l'ouverture et la fermeture du sommaire -->
+                </div>
+                <ul class="l_sommaire">
+                    <a href="#sommaire_id1" class="non_lien">
+                        <li>Bienvenue</li>
+                    </a>
+                    <a href="#sommaire_id2" class="non_lien">
+                        <li>Fonctionnement</li>
+                    </a>
+                    <a href="#sommaire_id3" class="non_lien">
+                        <li>Dénition</li>
+                    </a>
+                    <a href="#sommaire_id4" class="non_lien">
+                        <li>Conseil</li>
+                    </a>
+                    <a href="#sommaire_id5" class="non_lien">
+                        <li>Dons</li>
+                    </a>
+                    <a href="#sommaire_id6" class="non_lien">
+                        <li>Contact</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+        <div id="milieu"> <!-- On est ici dans la partie centrale appelé "milieu".-->
+
+            <h1>Apprenez maintenant <span id="sommaire_id1"></span>le langage des signes !</h1> <br><br>
+
+            <section> <!-- La page est divisée en différentes section constitué elles même de plusieurs éléments.-->
+                <p><span id="lettre_section">Bienvenue sur notre site d'apprentissage de la langue des signes !</span>
+                </p>
+                <p>Nous sommes ravis de vous offrir un espace dédié à l'apprentissage de ce mode de communication unique
+                    et passionnant. Que vous soyez débutant ou avancé, notre site
+                    propose des leçons intéractives et des exercices pratiques pour vous aider à développer vos
+                    compétences en langue des signes. Rejoignez notre communauté en ligne
+                    et découvrez la joie de la communication sans barrières avec les personnes sourdes et
+                    malentendantes. Commençons ensemble ce voyage fascinant !</p>
+                <!-- <div id="accueil_video"><iframe src="https://www.youtube.com/embed/Ahs-t9XPZdc"
+                        title="C'est quoi la langue des signes ?"></iframe></div> -->
+
+                <span id="sommaire_id2"></span>
+            </section>
+
+            <section>
+                <h4 id="fonctionnement">Fonctionnement de notre site</h4>
+                <ul class="section2">
+                    <img src="./asserts/bienvenue.jpg" class="s2iacceuil">
+                    <p id="s2pacceuil">Nous vous proposons des exercices simples mais ludiques pour votre apprentissage
+                        de la langue des signes françaises. Ainsi, nous vous proposons d'apprendre les bases de
+                        cette langue peu parlée mais si utile si vous avez un membre de votre
+                        famille atteint d'un handicap affectant son élocution ou son ouïe.<span
+                            id="sommaire_id3"></span></p>
+                </ul>
+            </section>
+
+            <section>
+                <h4 id="langue_des_signes">Mieux comprendre la Langue des Signes Française</h4>
+                <p>La langue des signes française (LSF) est la langue des signes utilisée par les sourds francophones et
+                    leurs proches ainsi que certains malentendants pour communiquer.
+                    La LSF est une langue à part entière et un des piliers de l’identité de la culture sourde. La LSF
+                    est signée par 100 000 à 200 000 personnes sourdes. La Langue Muette (LLM)
+                    propose des formations de Langue des Signes Française conçues pour acquérir ou parfaire des
+                    connaissances en un minimum de temps avec des formateurs expérimentés et pédagogues.</p>
+                <span id="sommaire_id4"></span>
+            </section>
+
+            <section>
+                <h4>Quelques conseils pour communiquer avec une personne malentendante</h4>
+                <p>Pour communiquer avec une personne malentendante, il est conseillé de se positionner en face d’elle
+                    et de maintenir le contact visuel. En effet, la personne sourde tire de précieuses
+                    informations :</p>
+                <ul>
+                    <li>de la posture,</li>
+                    <li>des mouvements,</li>
+                    <li>des expressions du visage</li>
+                    <li>et de la lecture labiale.</li>
+                </ul>
+                <p>Une discussion attentive, à proximité, dans un endroit calme, facilitera d’autant l’échange.</p>
+                <p>L’écoute et la patience sont également des critères importants. Un temps d’adaptation peut être
+                    requis selon les personnes. En cas d’incompréhension, il est conseillé d’expliquer
+                    à nouveau le propos en utilisant un autre angle. Cela évite de répéter plusieurs fois la même chose,
+                    et de générer de l’agacement et de la frustration. Il est possible de s’aider
+                    de la lecture labiale en articulant davantage. Inutile de ralentir le débit ou de crier. Cela
+                    pourrait créer du stress pour la personne malentendante.</p>
+                <p>Des phrases courtes et simples sont à privilégier. Elles facilitent la compréhension et demandent
+                    moins de concentration visuelle à la personne sourde. Il ne faut pas hésiter
+                    à lui demander si le propos<span id="sommaire_id5"></span> a bien été compris. Enfin, avoir recours
+                    à l’écrit peut être une solution pour lever toute ambiguïté et pour confirmer
+                    des informations importantes.</p>
+            </section>
+
+            <section>
+                <h4>Soutenez-nous !</h4>
+                <p>Ce site est totalement gratuit ! Il a été créé pour vous aider et permettre à chacun d'accéder à des
+                    contenus de qualité pour apprendre. </p>
+                Vous pouvez tout de même <a href="./soutenir.html">soutenir les actions de l'association</a> créatrice
+                de ce site pour nous permettre de l'améliorer et de nous aider à nous
+                diversifier. Merci d'avance.
+            </section>
+            <br><br><br>
+        </div>
+    </main>
+
+
+    <footer> <!-- Cette partie ne contient pas d'information sur le langage des signes mais uniquement sur le site en lui même, l'utilisateur peut nous contacter, nous suivre, et lire la chartre 
+        de confidencialité. Ce pied de page est commun à toutes les pages de notre site web. -->
+        <span id="sommaire_id6"></span>
+        <div id="bas_de_page" class="bas_de_page">
+            <img src="./asserts/Envellope.png" alt="Image d'enveloppe" id="IE1" class="case_pied_de_page">
+            <p id="PE2" class="case_pied_de_page">Ecrivez-nous</p>
+            <a href="mailto:contact@opktmgb" id="AE3" class="case_pied_de_page">llm@gmail.com</a>
+            <img src="./asserts/Téléphone.png" alt="Image de téléphone" id="IA1" class="case_pied_de_page">
+            <p id="PA2" class="case_pied_de_page">Appelez-nous</p>
+            <p id="AA3" class="case_pied_de_page">06 45 78 57 10</p>
+            <img src="./asserts/Pousse bleu.png" alt="Image de pousse levé" id="IS1" class="case_pied_de_page">
+            <p id="PS2" class="case_pied_de_page">Suivez-nous</p>
+            <div class="AS3" id="AS3">
+                <a class="b_contact" href="https://fr-fr.facebook.com/"><img src="./asserts/icons8-facebook-30.png"
+                        alt="icone de facebook" title="facebook"></a>
+                <a class="b_contact" href="https://www.instagram.com/?hl=fr"><img
+                        src="./asserts/icons8-instagram-30.png" alt="icone d'instagram'" title="instagram"></a>
+                <a class="b_contact" href="https://twitter.com/?lang=fr"><img src="./asserts/icons8-twitter-30.png"
+                        alt="icone de twitter" title="twitter"></a>
+            </div>
+            <p id="IL1">Aymeric Busquet de Caumont<br>Mathis Ferreira dos Santos<br>François Chevalier</p>
+            <p id="IL2">Réalisé en février 2023</p>
+            <p id="CG"> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img
+                        alt="Licence Creative Commons" style="border-width:0"
+                        src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />La Langue Muette œuvre est
+                mise à disposition selon les termes de la <a rel="license"
+                    href="http://creativecommons.org/licenses/by-sa/4.0/" id="utilisation">Licence Creative Commons
+                    Attribution - Partage dans les Mêmes Conditions 4.0 International</a>.</p>
+        </div>
+        <p id="droit">LLM ©2023 • All rights reserved • <a href="./charte de confidentialité.html"
+                class="case_pied_de_page" id="utilisation">Privacy Policy</a> • <a href="#cookies"
+                class="case_pied_de_page" id="utilisation">Cookie Statement</a> • LLM Policy
+
+        </p>
+
+
+    </footer>
+
+
+    <aside>
+        <!-- C'est dans cette balise que rentre tout le contenu qui n'a pas de rapport direct avec le document, ici les cookies fictifs et le bouton "Remonter en haut" -->
+        <div id="popup">
+            <div id="cookies" class="cookies">
+                <h2>Ce site utilisent des cookies</h2>
+                <a class="cross non_lien">&times;</a>
+                <div class="defilement">
+                    <p>Nous respectons votre vie privée<br> <!-- Le blabla habituelle-->
+                        LLM et ses partenaires déposent, indépendamment ou conjointement, des cookies sur votre appareil
+                        pour stocker et/ou accéder à des informations, telles que votre adresse IP,
+                        et peuvent les utiliser pour les finalités suivantes : publicités et contenu personnalisés;
+                        mesure de performance des publicités et du contenu; et données d’audience; développer
+                        et améliorer les produits; assurer la sécurité, prévenir la fraude et déboguer; diffuser
+                        techniquement les publicités ou le contenu.
+                        Nos partenaires peuvent utiliser des fonctionnalités spéciales c.-à-d. utiliser les données de
+                        géolocalisation précises et analyser activement les caractéristiques du terminal pour
+                        l’identification. Certains partenaires s'appuient sur leur intérêt légitime pour traiter vos
+                        données personnelles. Pour vous y opposer, consultez notre liste de partenaires. Vos
+                        choix sur ce site seront appliqués à l'ensemble du Service LLM. L’absence de consentement
+                        n'empêchera pas d'accéder à notre Service ni d'y voir des publicités.
+                        <br><br>
+                        En cliquant sur "Accepter", vous consentez à la collecte, aux utilisations et au partage de vos
+                        données, tels que décrits ci-dessus. Si vous cliquez sur "Refuser", votre consentement
+                        ne sera pas collecté.
+                        Pour en savoir plus sur l'utilisation de vos données par LLM et ses partenaires, consultez notre
+                        <a href="./charte de confidentialité.html">Charte de confidentialité</a>.
+                    </p>
+                </div>
+                <div class="conteneur-choice">
+                    <!-- L'utilisateur peut choisir d'accepter ou bien de refuser les cookies, sont choix est enregistré dans url du site grâce au JavaScript-->
+                    <!-- C'est pour cela que la question ne lui est pas redemandé à chaque fois qu'il revient sur la page d'acceuil ! -->
+                    <a id="choice_1" class="choice non_lien">Accepter</a>
+                    <a id="choice_2" class="choice non_lien">Refuser</a>
+                </div>
+            </div>
+        </div>
+
+        <div><a href="#top" id="cRetour" title="Retour en haut" class="cInvisible non_lien"></a></div>
+        <!-- Ce petit bouton apparait quand l'utilisateur descend dans la page, il lui permet de remonter en haut rapidement. -->
+        <script>
+            window.onscroll = function (ev) {
+                document.getElementById("cRetour").className = (window.pageYOffset > 500) ? "cVisible non_lien" : "cInvisible non_lien";
+            };
+        </script>
+    </aside>
+    <script src="script.js"></script>
+</body>
+
+</html>
